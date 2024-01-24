@@ -1,5 +1,3 @@
-<script setup>
-</script>
 <template>
   <div class="flex flex-col pt-10">
     <div class="relative">
@@ -22,8 +20,8 @@
         class="w-full py-2 px-2 bg-slate-200 text-slate-700 placeholder:text-slate-500 outline-none rounded resize-none"
         type="text"
         placeholder="Click to add placeholder text"
-        maxlength="25"
-        rows="1"
+        maxlength="100"
+        rows="4"
       ></textarea>
     </div>
   </div>
