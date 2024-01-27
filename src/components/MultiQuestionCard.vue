@@ -53,7 +53,7 @@ const delOption = (opt) => {
             @keydown.enter.prevent
             class="resize-none bg-inherit outline-none overflow-hidden text-base text-black"
             name="option"
-            maxlength="25"
+            maxlength="50"
             cols="5"
             rows="1"
           >
