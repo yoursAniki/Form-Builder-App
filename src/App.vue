@@ -5,8 +5,7 @@ import Header from './components/Header.vue';
 
 <template>
   <div class="bg-slate-100">
-    <Header />
-    <div class="pt-12 px-24">
+    <div class="">
       <router-view></router-view>
     </div>
 

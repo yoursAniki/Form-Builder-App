@@ -1,3 +1,8 @@
+<script setup>
+defineProps({
+  number: Number,
+})
+</script>
 <template>
   <div class="flex flex-col pt-10">
     <div class="relative">
@@ -12,9 +17,16 @@
       ></textarea>
     </div>
     <div class="relative">
-      <span class="absolute top-1 -left-3 text-lg font-black cursor-pointer select-none"
-        >&#8285;</span
-      >
+      <img
+        src="./icons/Long.svg"
+        class="absolute -left-5 text-lg font-black cursor-pointer select-none w-4 h-4"
+        alt="long"
+      />
+      <img
+        src="./icons/Group.svg"
+        class="absolute top-6 -left-5 text-lg font-black cursor-pointer select-none w-4 h-4"
+        alt="group"
+      />
       <textarea
         @keydown.enter.prevent
         class="w-full py-2 px-2 bg-slate-200 text-slate-700 placeholder:text-slate-500 outline-none rounded resize-none"
