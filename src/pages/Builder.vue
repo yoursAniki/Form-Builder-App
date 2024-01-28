@@ -4,7 +4,7 @@ import { ref, computed } from 'vue'
 import Header from '../components/Header.vue'
 import ShortTextCard from '../components/ShortTextCard.vue'
 import LongTextCard from '../components/LongTextCard.vue'
-import SingleQuestionCard from '../components/SingleQuestionCard.vue';
+import SingleQuestionCard from '../components/SingleQuestionCard.vue'
 
 const cards = ref([])
 const longCards = ref([])
@@ -31,18 +31,30 @@ const addSingleCard = () => {
   num++
 }
 // const amountOfCards = computed(() => cards.value.length + longCards.value.length)
+
+const showCard = ref(true)
+
+//todo реализовать удаление для всех карточек (в идеале чтобы все были в одном массиве)
+const delCard = (c) => {
+  let ind = singleCards.value.indexOf(c)
+  if (ind !== -1) {
+    singleCards.value.splice(ind, 1)
+  }
+}
+
 </script>
 
 <template>
-  <Header title="SimpleForms" sectionName="View Preview" sectionLogin="Publish"/>
-
+  <Header title="SimpleForms" sectionName="View Preview" sectionLogin="Publish" />
 
   <div class="flex justify-center text-center flex-col m-auto items-center pt-12">
     <div class="text-lg">Questions</div>
     <ShortTextCard :number="card.number" v-for="card in cards" :key="card" />
     <LongTextCard :number="longCard.number" v-for="longCard in longCards" :key="longCard" />
-    <SingleQuestionCard v-for="singleCard in singleCards" :key="singleCard" />
-    
+    <SingleQuestionCard v-show="showCard" v-for="singleCard in singleCards" :key="singleCard">
+      <div @click="delCard(singleCard)" class="min-w-36 pl-3 text-red-600 hover:bg-slate-200 cursor-pointer">Delete</div>
+    </SingleQuestionCard>
+
     <div class="text-lg mt-16 pb-7">
       <div>Add New Question</div>
       <div class="flex gap-2 mt-2">
