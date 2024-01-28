@@ -18,6 +18,12 @@ const delOption = (opt) => {
     countOptions--
   }
 }
+
+let showMenu = ref(false)
+
+const toggleMenu = () => {
+  showMenu.value = !showMenu.value
+}
 </script>
 
 <template>
@@ -39,9 +45,15 @@ const delOption = (opt) => {
         class="absolute top-3 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4"
       />
       <img
+        @click="toggleMenu"
         src="./icons/Group.svg"
-        class="absolute top-9 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4"
+        class="absolute top-9 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4 active:bg-slate-200 rounded"
       />
+      <div v-show="showMenu" class="absolute top-7 -left-44 text-start select-none rounded bg-white py-1 transition">
+        <div>
+          <div class="min-w-36 pl-3 text-red-600 hover:bg-slate-200 cursor-pointer">Delete</div>
+        </div>
+      </div>
       <div class="py-2 px-2 text-slate-700 outline-none resize-none flex max-w-xs flex-wrap">
         <div
           class="rounded pb-2 pt-2 mr-2 border-2 flex px-2 my-1"

@@ -3,7 +3,7 @@ import Header from '../components/Header.vue'
 </script>
 
 <template>
-  <Header title="Your forms" sectionName="44" sectionLogin="44"/>
+  <Header title="Your forms" sectionName="Username" sectionLogin="Unsigned" />
   
   <div class="pt-12 px-24">
     <div class="flex">
