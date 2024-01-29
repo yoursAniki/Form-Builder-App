@@ -52,7 +52,7 @@ const delCard = (c) => {
     <ShortTextCard :number="card.number" v-for="card in cards" :key="card" />
     <LongTextCard :number="longCard.number" v-for="longCard in longCards" :key="longCard" />
     <SingleQuestionCard v-show="showCard" v-for="singleCard in singleCards" :key="singleCard">
-      <div @click="delCard(singleCard)" class="min-w-36 pl-3 text-red-600 hover:bg-slate-200 cursor-pointer">Delete</div>
+      <div @click="delCard(singleCard)" class="min-w-36 pl-3 text-red-600 transition hover:bg-slate-200 cursor-pointer">Delete</div>
     </SingleQuestionCard>
 
     <div class="text-lg mt-16 pb-7">
