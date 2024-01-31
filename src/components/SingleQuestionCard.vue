@@ -1,6 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 
+defineProps({
+  sequenceNumber: Number
+})
+
 let countOptions = 0
 const options = ref([])
 
@@ -29,7 +33,9 @@ const toggleMenu = () => {
 <template>
   <div class="flex flex-col pt-10">
     <div class="relative">
-      <span class="absolute top-3 -left-3 text-lg text-slate-400 select-none">1</span>
+      <span class="absolute top-3 -left-3 text-lg text-slate-400 select-none">{{
+        sequenceNumber
+      }}</span>
       <textarea
         @keydown.enter.prevent
         class="w-full py-2 px-2 bg-inherit transition focus:border-none focus:bg-slate-200 mb-1 text-2xl font-bold outline-none min-w-64 max-h-16 rounded resize-none"
@@ -54,10 +60,7 @@ const toggleMenu = () => {
         class="absolute top-7 -left-44 text-start select-none rounded bg-white py-1 transition"
       >
         <div>
-          <div
-            @click=""
-            class="min-w-36 pl-3 text-red-600 transition hover:bg-slate-200 cursor-pointer"
-          >
+          <div class="min-w-36 pl-3 text-red-600 transition hover:bg-slate-200 cursor-pointer">
             Delete
           </div>
         </div>

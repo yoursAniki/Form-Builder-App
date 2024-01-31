@@ -1,12 +1,12 @@
 <script setup>
 defineProps({
-  number: Number,
+  sequenceNumber: Number
 })
 </script>
 <template>
   <div class="flex flex-col pt-10">
     <div class="relative">
-      <span class="absolute top-3 -left-3 text-lg text-slate-400 select-none">1</span>
+      <span class="absolute top-3 -left-3 text-lg text-slate-400 select-none">{{ sequenceNumber }}</span>
       <textarea
         @keydown.enter.prevent
         class="w-full py-2 px-2 bg-inherit transition focus:border-none focus:bg-slate-200 mb-1 text-2xl font-bold outline-none min-w-64 max-h-16 rounded resize-none"
