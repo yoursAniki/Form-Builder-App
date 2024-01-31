@@ -20,7 +20,9 @@ const deleteCard = () => {
 <template>
   <div v-if="isVisible" class="flex flex-col pt-10">
     <div class="relative">
-      <span class="absolute top-3 -left-3 text-lg text-slate-400 select-none">{{ sequenceNumber }}</span>
+      <span class="absolute top-3 -left-3 text-lg text-slate-400 select-none">{{
+        sequenceNumber
+      }}</span>
       <textarea
         @keydown.enter.prevent
         class="w-full py-2 px-2 bg-inherit transition focus:border-none focus:bg-slate-200 mb-1 text-2xl font-bold outline-none min-w-64 max-h-16 rounded resize-none"
@@ -46,10 +48,18 @@ const deleteCard = () => {
         v-show="showMenu"
         class="absolute top-7 -left-44 text-start select-none rounded bg-white py-1 transition"
       >
-        <div>
-          <div @click="deleteCard" class="min-w-36 pl-3 text-red-600 transition hover:bg-slate-200 cursor-pointer">
+        <div class="flex flex-col">
+          <button
+            class="text-left py-1 min-w-36 pl-3 text-black transition hover:bg-slate-200 cursor-pointer active:bg-slate-300"
+          >
+            Enforce Answer
+          </button>
+          <button
+            @click="deleteCard"
+            class="text-left py-1 min-w-36 pl-3 text-red-600 transition hover:bg-slate-200 cursor-pointer active:bg-slate-300"
+          >
             Delete
-          </div>
+          </button>
         </div>
       </div>
       <textarea

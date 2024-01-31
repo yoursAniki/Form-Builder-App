@@ -1,8 +1,6 @@
 <script setup>
 defineProps({
   title: String,
-  sectionName: String,
-  sectionLogin: String,
 })
 </script>
 
