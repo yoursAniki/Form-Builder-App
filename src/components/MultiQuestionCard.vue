@@ -68,7 +68,7 @@ const delOption = (opt) => {
         </div>
         <div
           @click="addOption"
-          class="border-2 rounded p-2 cursor-pointer select-none transition active:bg-slate-200 my-1"
+          class="border-2 rounded p-2 cursor-pointer select-none transition active:bg-slate-200 my-1 flex justify-center items-center"
         >
           <img class="-ml-1" src="./icons/plus.svg" alt="plus" />
           Add option
