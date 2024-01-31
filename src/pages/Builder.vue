@@ -36,7 +36,18 @@ watch(
 </script>
 
 <template>
-  <Header title="SimpleForms" sectionName="View Preview" sectionLogin="Publish" />
+  <Header title="SimpleForms">
+    <button
+        class="text-xs w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10"
+      >
+        View Preview
+      </button>
+    <button
+        class="bg-slate-950 text-xs w-14 h-10 md:rounded-md rounded transition hover:bg-slate-800 cursor-pointer active:bg-slate-700 select-none shadow md:text-lg md:w-28 md:h-10 text-white"
+      >
+        Publish
+      </button>
+  </Header>
 
   <div class="flex justify-center text-center flex-col m-auto items-center pt-12">
     <div class="text-lg">Questions</div>

@@ -12,12 +12,7 @@ defineProps({
       <h1 class="font-bold select-none cursor-pointer">{{ title }}</h1>
     </router-link>
     <div class="flex gap-2 items-center md:gap-6">
-      <div>{{ sectionName }}</div>
-      <button
-        class="text-xs w-14 h-8 border-2 rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none md:text-lg md:w-28 md:h-10"
-      >
-        {{ sectionLogin }}
-      </button>
+      <slot></slot>
     </div>
   </header>
 </template>
