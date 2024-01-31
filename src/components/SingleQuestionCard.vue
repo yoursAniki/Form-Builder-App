@@ -54,7 +54,12 @@ const toggleMenu = () => {
         class="absolute top-7 -left-44 text-start select-none rounded bg-white py-1 transition"
       >
         <div>
-          <slot></slot>
+          <div
+            @click=""
+            class="min-w-36 pl-3 text-red-600 transition hover:bg-slate-200 cursor-pointer"
+          >
+            Delete
+          </div>
         </div>
       </div>
       <div class="py-2 px-2 text-slate-700 outline-none resize-none flex max-w-xs flex-wrap">
