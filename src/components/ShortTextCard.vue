@@ -20,7 +20,7 @@ const deleteCard = () => {
 <template>
   <div class="flex flex-col pt-10">
     <div class="relative">
-      <span class="absolute top-3 -left-3 text-lg text-slate-400 select-none">{{
+      <span class="absolute top-3 -left-4 text-lg text-slate-400 select-none ">{{
         sequenceNumber
       }}</span>
       <textarea

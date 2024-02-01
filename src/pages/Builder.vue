@@ -64,7 +64,7 @@ const deleteAllCards = () => {
     </button>
   </Header>
 
-  <div class="flex justify-center text-center flex-col m-auto items-center pt-12">
+  <div class="flex justify-center text-center flex-col m-auto items-center pt-12 px-8">
     <button
       @click="deleteAllCards"
       class="text-xs bg-red-600 text-slate-200 w-20 h-10 md:rounded-md rounded transition hover:bg-red-700 cursor-pointer active:bg-red-800 select-none shadow md:text-lg md:w-28 md:h-10"
