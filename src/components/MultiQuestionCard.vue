@@ -44,7 +44,7 @@ const deleteCard = () => {
       }}</span>
       <textarea
         @keydown.enter.prevent
-        class="w-full py-2 pl-3 pr-2 bg-inherit transition focus:border-none focus:bg-slate-200 mb-1 text-2xl font-bold outline-none min-w-64 max-h-16 rounded resize-none"
+        class="w-full py-2 pl-3 pr-2 bg-inherit transition focus:border-none mb-1 text-2xl font-bold min-w-64 max-h-16 rounded resize-none focus:outline-2 focus:outline-dashed focus:outline-slate-300"
         type="text"
         placeholder="Click to edit prompt"
         maxlength="30"
