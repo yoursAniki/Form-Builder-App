@@ -20,12 +20,12 @@ const deleteCard = () => {
 <template>
   <div class="flex flex-col pt-10">
     <div class="relative">
-      <span class="absolute top-3 -left-4 text-lg text-slate-400 select-none ">{{
+      <span class="absolute top-3 -left-4 text-lg text-slate-400 select-none">{{
         sequenceNumber
       }}</span>
       <textarea
         @keydown.enter.prevent
-        class="w-full py-2 px-2 bg-inherit transition focus:border-none focus:bg-slate-200 mb-1 text-2xl font-bold outline-none min-w-64 max-h-16 rounded resize-none"
+        class="w-full py-2 pl-3 pr-2 bg-inherit transition focus:border-none focus:bg-slate-200 mb-1 text-2xl font-bold outline-none min-w-64 max-h-16 rounded resize-none"
         type="text"
         placeholder="Click to edit prompt"
         maxlength="30"
@@ -64,7 +64,7 @@ const deleteCard = () => {
       </div>
       <textarea
         @keydown.enter.prevent
-        class="w-full py-2 px-2 bg-slate-200 text-slate-700 placeholder:text-slate-500 outline-none rounded resize-none"
+        class="w-full py-2 px-2 bg-slate-200 placeholder:text-slate-500 outline-none rounded resize-none transition focus:text-slate-950 text-slate-400"
         type="text"
         placeholder="Click to add placeholder text"
         maxlength="25"

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, watch} from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 
 import Header from '../components/Header.vue'
 import ShortTextCard from '../components/ShortTextCard.vue'
@@ -72,7 +72,7 @@ const deleteAllCards = () => {
       Delete All
     </button>
 
-    <div v-if="cards && cards.length > 0">
+    <div v-if="cards && cards.length > 0" class="flex flex-col">
       <component
         v-for="card in cards"
         :key="card.id"
