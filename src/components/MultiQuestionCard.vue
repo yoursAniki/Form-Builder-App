@@ -1,5 +1,6 @@
 <script setup>
 import { ref, getCurrentInstance } from 'vue'
+import { vOnClickOutside } from '@vueuse/components'
 
 defineProps({
   sequenceNumber: Number
@@ -34,6 +35,15 @@ const { emit } = getCurrentInstance()
 const deleteCard = () => {
   emit('delete-request')
 }
+
+const ignored = ref()
+
+const closeMenu = [
+  () => {
+    showMenu.value = false
+  },
+  { ignore: [ignored] }
+]
 </script>
 
 <template>
@@ -57,13 +67,15 @@ const deleteCard = () => {
         class="absolute top-3 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4"
       />
       <img
+        ref="ignored"
         @click="toggleMenu"
         src="./icons/Group.svg"
         class="absolute top-9 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4 active:bg-slate-200 rounded"
       />
       <div
+        v-on-click-outside="closeMenu"
         v-show="showMenu"
-        class="absolute top-7 -left-44 text-start select-none rounded bg-white py-1 transition"
+        class="absolute sm:top-7 sm:-left-44 top-7 left-0 text-start select-none rounded bg-white py-1 transition"
       >
         <div class="flex flex-col">
           <button

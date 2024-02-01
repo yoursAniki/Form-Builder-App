@@ -24,7 +24,7 @@ const closeMenu = [
   () => {
     showMenu.value = false
   },
-  {ignore: [ignored]}
+  { ignore: [ignored] }
 ]
 </script>
 <template>
