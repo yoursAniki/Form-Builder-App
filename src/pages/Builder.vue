@@ -9,15 +9,12 @@ import MultiQuestionCard from '@/components/MultiQuestionCard.vue'
 
 const cards = ref([])
 
-let num = 1
-
 const addCard = (cardName, props) => {
   cards.value.push({
     id: Date.now(),
     component: cardName,
     props: props || {}
   })
-  num++
 }
 
 onMounted(() => {
@@ -64,16 +61,19 @@ const deleteCard = (cardId) => {
   </Header>
 
   <div class="flex justify-center text-center flex-col m-auto items-center pt-12">
-    <div class="text-lg">Questions</div>
+    <div class="text-lg">Questions:</div>
 
-    <component
-      v-for="card in cards"
-      :key="card.id"
-      :is="card.component"
-      :data="card"
-      v-bind="card.props"
-      @delete-request="deleteCard(card.id)"
-    />
+    <div v-if="cards && cards.length > 0">
+      <component
+        v-for="card in cards"
+        :key="card.id"
+        :is="card.component"
+        :data="card"
+        v-bind="card.props"
+        @delete-request="deleteCard(card.id)"
+      />
+    </div>
+    <div v-else class="text-slate-400 text-lg py-1 px-2 my-5 border-2 border-slate-300	">You didn't add any questions</div>
 
     <div class="text-lg mt-16 pb-7">
       <div>Add New Question</div>
