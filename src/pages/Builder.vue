@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch} from 'vue'
 
 import Header from '../components/Header.vue'
 import ShortTextCard from '../components/ShortTextCard.vue'
@@ -36,32 +36,41 @@ const amountCards = computed(() => {
 })
 
 const deleteCard = (cardId) => {
-  const index = cards.value.findIndex(comp => comp.id === cardId)
+  const index = cards.value.findIndex((comp) => comp.id === cardId)
 
   if (index !== -1) {
-    cards.value.splice(index, 1);
-    localStorage.setItem('cards', JSON.stringify(cards.value));
+    cards.value.splice(index, 1)
+    localStorage.setItem('cards', JSON.stringify(cards.value))
   }
 }
 
+const deleteAllCards = () => {
+  cards.value.splice(0, cards.value.length)
+  localStorage.setItem('cards', JSON.stringify(cards.value))
+}
 </script>
 
 <template>
   <Header title="SimpleForms">
     <button
-        class="text-xs w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10"
-      >
-        View Preview
-      </button>
+      class="text-xs w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10"
+    >
+      View Preview
+    </button>
     <button
-        class="bg-slate-950 text-xs w-14 h-10 md:rounded-md rounded transition hover:bg-slate-800 cursor-pointer active:bg-slate-700 select-none shadow md:text-lg md:w-28 md:h-10 text-white"
-      >
-        Publish
-      </button>
+      class="bg-slate-950 text-xs w-14 h-10 md:rounded-md rounded transition hover:bg-slate-800 cursor-pointer active:bg-slate-700 select-none shadow md:text-lg md:w-28 md:h-10 text-white"
+    >
+      Publish
+    </button>
   </Header>
 
   <div class="flex justify-center text-center flex-col m-auto items-center pt-12">
-    <div class="text-lg">Questions:</div>
+    <button
+      @click="deleteAllCards"
+      class="text-xs bg-red-600 text-slate-200 w-20 h-10 md:rounded-md rounded transition hover:bg-red-700 cursor-pointer active:bg-red-800 select-none shadow md:text-lg md:w-28 md:h-10"
+    >
+      Delete All
+    </button>
 
     <div v-if="cards && cards.length > 0">
       <component
@@ -73,7 +82,9 @@ const deleteCard = (cardId) => {
         @delete-request="deleteCard(card.id)"
       />
     </div>
-    <div v-else class="text-slate-400 text-lg py-1 px-2 my-5 border-2 border-slate-300	">You didn't add any questions</div>
+    <div v-else class="text-slate-400 text-lg py-1 px-2 my-5 border-2 border-slate-300">
+      You didn't add any questions
+    </div>
 
     <div class="text-lg mt-16 pb-7">
       <div>Add New Question</div>
