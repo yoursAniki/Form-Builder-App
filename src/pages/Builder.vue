@@ -38,6 +38,15 @@ const amountCards = computed(() => {
   return cards.value.length + 1
 })
 
+const deleteCard = (cardId) => {
+  const index = cards.value.findIndex(comp => comp.id === cardId)
+
+  if (index !== -1) {
+    cards.value.splice(index, 1);
+    localStorage.setItem('cards', JSON.stringify(cards.value));
+  }
+}
+
 </script>
 
 <template>
@@ -63,7 +72,7 @@ const amountCards = computed(() => {
       :is="card.component"
       :data="card"
       v-bind="card.props"
-      
+      @delete-request="deleteCard(card.id)"
     />
 
     <div class="text-lg mt-16 pb-7">

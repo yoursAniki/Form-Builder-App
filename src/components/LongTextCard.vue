@@ -1,7 +1,21 @@
 <script setup>
+import { ref, getCurrentInstance } from 'vue'
+
 defineProps({
   sequenceNumber: Number
 })
+
+const showMenu = ref(false)
+
+const toggleMenu = () => {
+  showMenu.value = !showMenu.value
+}
+
+const { emit } = getCurrentInstance()
+
+const deleteCard = () => {
+  emit('delete-request')
+}
 </script>
 <template>
   <div class="flex flex-col pt-10">
@@ -34,13 +48,18 @@ defineProps({
         v-show="showMenu"
         class="absolute top-7 -left-44 text-start select-none rounded bg-white py-1 transition"
       >
-        <div>
-          <div
+        <div class="flex flex-col">
+          <button
+            class="text-left py-1 min-w-36 pl-3 text-black transition hover:bg-slate-200 cursor-pointer active:bg-slate-300"
+          >
+            Enforce Answer
+          </button>
+          <button
             @click="deleteCard"
-            class="min-w-36 pl-3 text-red-600 transition hover:bg-slate-200 cursor-pointer"
+            class="text-left py-1 min-w-36 pl-3 text-red-600 transition hover:bg-slate-200 cursor-pointer active:bg-slate-300"
           >
             Delete
-          </div>
+          </button>
         </div>
       </div>
       <textarea

@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, getCurrentInstance } from 'vue'
 
 defineProps({
   sequenceNumber: Number
@@ -23,10 +23,16 @@ const delOption = (opt) => {
   }
 }
 
-let showMenu = ref(false)
+const showMenu = ref(false)
 
 const toggleMenu = () => {
   showMenu.value = !showMenu.value
+}
+
+const { emit } = getCurrentInstance()
+
+const deleteCard = () => {
+  emit('delete-request')
 }
 </script>
 
@@ -59,11 +65,18 @@ const toggleMenu = () => {
         v-show="showMenu"
         class="absolute top-7 -left-44 text-start select-none rounded bg-white py-1 transition"
       >
-        <div>
-          
-          <!-- <div class="min-w-36 pl-3 text-red-600 transition hover:bg-slate-200 cursor-pointer">
+        <div class="flex flex-col">
+          <button
+            class="text-left py-1 min-w-36 pl-3 text-black transition hover:bg-slate-200 cursor-pointer active:bg-slate-300"
+          >
+            Enforce Answer
+          </button>
+          <button
+            @click="deleteCard"
+            class="text-left py-1 min-w-36 pl-3 text-red-600 transition hover:bg-slate-200 cursor-pointer active:bg-slate-300"
+          >
             Delete
-          </div> -->
+          </button>
         </div>
       </div>
       <div class="py-2 px-2 text-slate-700 outline-none resize-none flex max-w-xs flex-wrap">

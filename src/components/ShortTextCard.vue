@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, getCurrentInstance } from 'vue'
 
 defineProps({
   sequenceNumber: Number
@@ -11,14 +11,14 @@ const toggleMenu = () => {
   showMenu.value = !showMenu.value
 }
 
-const isVisible = ref(true)
+const { emit } = getCurrentInstance()
 
 const deleteCard = () => {
-  isVisible.value = false
+  emit('delete-request')
 }
 </script>
 <template>
-  <div v-if="isVisible" class="flex flex-col pt-10">
+  <div class="flex flex-col pt-10">
     <div class="relative">
       <span class="absolute top-3 -left-3 text-lg text-slate-400 select-none">{{
         sequenceNumber
