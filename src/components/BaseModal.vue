@@ -53,7 +53,7 @@ const confirmation = () => {
       <div class="p-2 absolute right-0">
         <CloseButton @click="closeModal" />
       </div>
-      <div class="p-6 pt-10 pb-1">
+      <div class="p-6 pt-10 pb-1 text-center">
         {{ modalInner }}
       </div>
       <div class="p-3 flex justify-center gap-3">

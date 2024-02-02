@@ -1,5 +1,14 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
+import { ref } from 'vue'
+
+import BaseModal from '@/components/BaseModal.vue'
 import Header from '../components/Header.vue'
+
+const isModalOpen = ref(false)
+
+// Организовыать удаление всех форм
+const deleteAllForms = () => {}
 </script>
 
 <template>
@@ -8,11 +17,19 @@ import Header from '../components/Header.vue'
     <div></div>
 
     <button
+      @click="isModalOpen = true"
       class="text-xs text-red-500 w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10"
     >
       Remove All
     </button>
   </Header>
+
+  <BaseModal
+    v-if="isModalOpen"
+    @close="isModalOpen = false"
+    modalInner="Do you really want to delete all the forms?"
+    @confirm-request="deleteAllForms"
+  />
 
   <div class="md:pt-12 md:px-24 pt-6 px-8">
     <div class="flex sm:items-start sm:justify-normal items-center justify-center">

@@ -52,6 +52,8 @@ const deleteAllCards = () => {
 }
 
 const isModalOpen = ref(false)
+
+
 </script>
 
 <template>
