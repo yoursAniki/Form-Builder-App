@@ -50,6 +50,8 @@ const deleteAllCards = () => {
   cards.value.splice(0, cards.value.length)
   localStorage.setItem('cards', JSON.stringify(cards.value))
 }
+
+const isModalOpen = ref(false)
 </script>
 
 <template>
@@ -67,15 +69,21 @@ const deleteAllCards = () => {
   </Header>
 
   <div class="flex justify-center text-center flex-col m-auto items-center pt-12 px-8">
-
+    <!-- Добавить удаление всех карт -->
     <button
-      @click="deleteAllCards"
+      @click="isModalOpen = true"
       class="text-xs text-red-500 w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 active:border-slate-300 select-none shadow md:text-lg md:w-36 md:h-10"
     >
       Delete All
     </button>
 
-    <BaseModal />
+    <!-- Переносить строчки в modalInner во избежание выхода содержимого за рамки окна -->
+    <BaseModal
+      v-if="isModalOpen"
+      @close="isModalOpen = false"
+      modalInner="Do you really want to delete all the questions?"
+      @confirm-request="deleteAllCards"
+    />
 
     <div v-if="cards && cards.length > 0" class="flex flex-col">
       <component
