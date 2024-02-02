@@ -55,11 +55,13 @@ const isModalOpen = ref(false)
 </script>
 
 <template>
+
   <Header>
-    
+
     <template v-slot:title>SimpleForms</template>
 
     <template v-slot:button>
+      
       <button
         class="text-xs w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10"
       >
