@@ -12,16 +12,19 @@ const deleteAllForms = () => {}
 </script>
 
 <template>
-  <Header title="Your forms">
-    <!-- Здесь можно что-то разместить -->
-    <div></div>
+  <Header>
+    <template v-slot:title> Your Forms </template>
+    <template v-slot:button>
+      <!-- Здесь можно что-то разместить -->
+      <div></div>
 
-    <button
-      @click="isModalOpen = true"
-      class="text-xs text-red-500 w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10"
-    >
-      Remove All
-    </button>
+      <button
+        @click="isModalOpen = true"
+        class="text-xs text-red-500 w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10"
+      >
+        Remove All
+      </button>
+    </template>
   </Header>
 
   <BaseModal
