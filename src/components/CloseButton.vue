@@ -19,7 +19,7 @@ const clickChangeColor = () => {
 </script>
 
 <template>
-  <button class="cursor-pointer active:stroke-slate-900">
+  <button class="select-none cursor-pointer active:stroke-slate-900">
     <svg
       v-bind:class="{ hover: isHovered }"
       @click="clickChangeColor"

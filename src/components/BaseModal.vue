@@ -5,7 +5,7 @@ import CloseButton from './CloseButton.vue'
 <template>
   <div class="fixed inset-0 z-10 bg-black bg-opacity-80">
     <div class="bg-white rounded max-w-sm mx-auto my-8 relative">
-      <div class="p-2 select-none absolute right-0">
+      <div class="p-2 absolute right-0">
         <CloseButton />
       </div>
       <div class="p-6 pt-10">
@@ -20,6 +20,6 @@ import CloseButton from './CloseButton.vue'
 <style>
 #Shape,
 #Shape_2 {
-  transition: stroke 0.3s ease;
+  transition: stroke 0.2s linear;
 }
 </style>
