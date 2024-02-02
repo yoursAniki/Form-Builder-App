@@ -3,6 +3,7 @@
 import { ref, computed, onMounted, watch } from 'vue'
 
 import Header from '../components/Header.vue'
+import BaseModal from '@/components/BaseModal.vue'
 import ShortTextCard from '../components/ShortTextCard.vue'
 import LongTextCard from '../components/LongTextCard.vue'
 import SingleQuestionCard from '../components/SingleQuestionCard.vue'
@@ -66,12 +67,15 @@ const deleteAllCards = () => {
   </Header>
 
   <div class="flex justify-center text-center flex-col m-auto items-center pt-12 px-8">
+
     <button
       @click="deleteAllCards"
       class="text-xs text-red-500 w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 active:border-slate-300 select-none shadow md:text-lg md:w-36 md:h-10"
     >
       Delete All
     </button>
+
+    <BaseModal />
 
     <div v-if="cards && cards.length > 0" class="flex flex-col">
       <component
