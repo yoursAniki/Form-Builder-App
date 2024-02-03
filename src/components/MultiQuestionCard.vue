@@ -1,6 +1,7 @@
 <script setup>
 import { ref, getCurrentInstance } from 'vue'
 import { vOnClickOutside } from '@vueuse/components'
+import CloseButton from './CloseButton.vue'
 
 defineProps({
   sequenceNumber: Number
@@ -107,9 +108,7 @@ const closeMenu = [
             rows="1"
           >
           </textarea>
-          <div @click="delOption(option)" class="cursor-pointer">
-            <img src="./icons/x.svg" alt="close" />
-          </div>
+          <CloseButton @click="delOption(option)" class="pl-1" />
         </div>
         <div
           @click="addOption"
