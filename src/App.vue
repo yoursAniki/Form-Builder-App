@@ -1,16 +1,11 @@
-<script setup>
-import Header from './components/Header.vue';
-
-</script>
+<script setup></script>
 
 <template>
   <div class="bg-slate-100">
     <div class="">
       <router-view></router-view>
     </div>
-
   </div>
-
 </template>
 
 <style>

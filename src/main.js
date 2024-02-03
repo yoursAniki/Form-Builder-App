@@ -1,7 +1,7 @@
 import './assets/main.css'
 
 import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './App.vue'
 
 import Home from './pages/Home.vue'
@@ -11,11 +11,11 @@ const app = createApp(App)
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
-  { path: '/builder', name: 'Builder', component: Builder },
+  { path: '/builder', name: 'Builder', component: Builder }
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 })
 
