@@ -2,7 +2,7 @@
 
 When making this app, I started from [this template](<https://www.figma.com/file/3wHykXtJYobKSXO5mAsA7M/SimpleForm-(Community)?type=design&node-id=0-1&mode=design&t=RdcYKOOJGCZz45MU-0>).
 
-[Github pages ref](https://yoursaniki.github.io/Form-Builder-App/#/)
+You can try my app on [Github pages](https://yoursaniki.github.io/Form-Builder-App/#/).
 
 ## Recommended IDE Setup
 
