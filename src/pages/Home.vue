@@ -7,30 +7,29 @@ import Header from '../components/Header.vue'
 
 const isModalOpen = ref(false)
 
-// Организовыать удаление всех форм
+const openModal = () => {
+  isModalOpen.value = true
+  document.body.style.overflow = 'hidden'
+}
+//TODO: Организовыать удаление всех форм
 const deleteAllForms = () => {}
 </script>
 
 <template>
-
   <Header>
-
     <template v-slot:title> Your Forms </template>
 
     <template v-slot:button>
-      
       <!-- Здесь можно что-то разместить -->
       <div></div>
 
       <button
-        @click="isModalOpen = true"
-        class="text-xs text-red-500 w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10"
+        @click="openModal"
+        class="text-sm text-red-500 w-20 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10"
       >
         Remove All
       </button>
-
     </template>
-
   </Header>
 
   <BaseModal

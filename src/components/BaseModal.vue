@@ -12,6 +12,7 @@ const { emit } = getCurrentInstance()
 const closeModal = () => {
   isOpen.value = false
   setTimeout(() => emit('close'), 100)
+  document.body.style.overflow = 'visible'
 }
 
 const modal = ref(null)
@@ -49,7 +50,7 @@ const confirmation = () => {
       <div v-if="isOpen" @click="closeModal" class="fixed inset-0 bg-black bg-opacity-80"></div>
     </transition>
 
-    <div v-if="isOpen" class="bg-white rounded max-w-sm mx-auto my-8 relative">
+    <div v-if="isOpen" class="bg-white rounded sm:max-w-sm mx-auto my-8 relative max-w-72">
       <div class="p-2 absolute right-0">
         <CloseButton @click="closeModal" />
       </div>

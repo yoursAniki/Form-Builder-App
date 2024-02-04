@@ -59,6 +59,11 @@ const updateSequenceNumbers = () => {
 watch(cards, () => {
   updateSequenceNumbers()
 })
+
+const openModal = () => {
+  isModalOpen.value = true
+  document.body.style.overflow = 'hidden'
+}
 </script>
 
 <template>
@@ -81,8 +86,8 @@ watch(cards, () => {
 
   <div class="flex justify-center text-center flex-col m-auto items-center pt-12 px-8">
     <button
-      @click="isModalOpen = true"
-      class="text-xs text-red-500 w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 active:border-slate-300 select-none shadow md:text-lg md:w-36 md:h-10"
+      @click="openModal"
+      class="text-red-500 border-2 md:rounded-md rounded transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 active:border-slate-300 select-none shadow text-lg w-36 h-10"
     >
       Delete All
     </button>
