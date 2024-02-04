@@ -2,6 +2,8 @@
 
 When making this app, I started from [this template](<https://www.figma.com/file/3wHykXtJYobKSXO5mAsA7M/SimpleForm-(Community)?type=design&node-id=0-1&mode=design&t=RdcYKOOJGCZz45MU-0>).
 
+[Github pages ref](https://yoursaniki.github.io/Form-Builder-App/#/)
+
 ## Recommended IDE Setup
 
 [VS Code](https://code.visualstudio.com/), [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar), [Vite](https://vitejs.dev/)
