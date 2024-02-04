@@ -12,4 +12,17 @@
 html {
   background-color: rgb(241 245 249);
 }
+
+/* Styles scrollbar */
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  background: #e8e8e8;
+}
+::-webkit-scrollbar-thumb {
+  background: #bababa;
+  border-radius: 20px;
+  border: 3px solid #dbdbdb;
+}
 </style>
