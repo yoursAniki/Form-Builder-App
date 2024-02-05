@@ -9,7 +9,7 @@ import TrashButton from '@/components/TrashButton.vue'
     <div class="flex flex-col min-h-full">
       <div class="m-3 mx-4 flex-auto">
         <!-- Name of the form -->
-        <div class="font-bold select-none text-xl text-black text-wrap truncate">
+        <div class="font-bold text-xl text-black text-wrap truncate select-text">
           <slot name="title"></slot>
         </div>
         <!-- Date of update -->
