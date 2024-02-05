@@ -74,10 +74,3 @@ const confirmation = () => {
     </div>
   </div>
 </template>
-
-<style>
-#Shape,
-#Shape_2 {
-  transition: stroke 0.2s linear;
-}
-</style>

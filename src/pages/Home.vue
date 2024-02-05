@@ -4,6 +4,7 @@ import { ref } from 'vue'
 
 import BaseModal from '@/components/BaseModal.vue'
 import Header from '../components/Header.vue'
+import BaseForm from '@/components/BaseForm.vue'
 
 const isModalOpen = ref(false)
 
@@ -50,6 +51,10 @@ const deleteAllForms = () => {}
           + Create a form
         </div>
       </router-link>
+      
+        <!-- Добавить адаптивный отступ -->
+        <BaseForm />
+
     </div>
   </div>
 </template>

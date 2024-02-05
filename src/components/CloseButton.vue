@@ -32,7 +32,7 @@ const clickChangeColor = () => {
     >
       <g id="feather-icon / x">
         <path
-          id="Shape"
+          id="Shape_1"
           d="M18 6L6 18"
           :stroke="closeColor"
           stroke-width="2"
@@ -51,3 +51,12 @@ const clickChangeColor = () => {
     </svg>
   </button>
 </template>
+
+<style scoped>
+#Shape_1 {
+  transition: all 0.2s linear;
+}
+#Shape_2 {
+  transition: all 0.2s linear;
+}
+</style>
