@@ -6,11 +6,11 @@ You can try my app on [Github pages](https://yoursaniki.github.io/Form-Builder-A
 
 ## Recommended IDE Setup
 
-[VS Code](https://code.visualstudio.com/), [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar), [Vite](https://vitejs.dev/)
+[VS Code](https://code.visualstudio.com/), [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar), [Vite](https://vitejs.dev/).
 
 ## Customize Configuration
 
-[Vite Configuration Settings](https://vitejs.dev/config/)
+[Vite Configuration Settings](https://vitejs.dev/config/).
 
 ## Project Setup
 
