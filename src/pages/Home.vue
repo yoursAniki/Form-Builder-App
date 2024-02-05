@@ -39,11 +39,13 @@ const deleteAllForms = () => {}
     @confirm-request="deleteAllForms"
   />
 
-  <div class="md:pt-12 md:px-24 pt-6 px-8">
-    <div class="flex sm:items-start sm:justify-normal items-center justify-center">
+  <div class="md:pt-12 md:px-24 pt-6 sm:px-8 px-4">
+    <div
+      class="flex items-start justify-center md:gap-8 sm:gap-6 gap-3 sm:justify-normal flex-wrap"
+    >
       <router-link to="/builder">
         <div
-          class="whitespace-nowrap md:py-20 md:px-16 sm:py-16 sm:px-8 sm:text-lg text py-8 px-6 border-2 rounded text-gray-400 cursor-pointer transition hover:-translate-x-2 hover:-translate-y-2 active:bg-slate-200 select-none hover:shadow-md shadow-sm"
+          class="whitespace-nowrap md:py-20 md:px-16 sm:py-16 sm:px-8 sm:text-lg py-8 px-2 border-2 rounded text-gray-400 cursor-pointer transition hover:-translate-x-2 hover:-translate-y-2 active:bg-slate-200 select-none hover:shadow-md shadow-sm"
         >
           + Create a form
         </div>
