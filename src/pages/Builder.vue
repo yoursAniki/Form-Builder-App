@@ -15,7 +15,8 @@ const addCard = (cardName) => {
   cards.value.push({
     id: Date.now(),
     component: cardName,
-    order: cards.value.length + 1
+    order: cards.value.length + 1,
+    isRequired: false
   })
 }
 
@@ -64,6 +65,10 @@ const openModal = () => {
   isModalOpen.value = true
   document.body.style.overflow = 'hidden'
 }
+
+const toggleRequiredRequest = (card) => {
+  card.isRequired = !card.isRequired
+}
 </script>
 
 <template>
@@ -108,6 +113,7 @@ const openModal = () => {
         :data="card"
         v-bind="card.props"
         @delete-request="deleteCard(card.id)"
+        @toggle-required-request="toggleRequiredRequest(card)"
         :sequenceNumber="card.order"
       />
     </div>

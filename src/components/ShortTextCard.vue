@@ -26,6 +26,23 @@ const closeMenu = [
   },
   { ignore: [ignored] }
 ]
+
+const isRequired = ref(false)
+
+const requiredText = ref('Enforce answer')
+
+const toggleRequiredRequest = () => {
+  toggleMenu()
+  isRequired.value = !isRequired.value
+  if (isRequired.value === true) {
+    requiredText.value = 'Neglect answer'
+  } else {
+    requiredText.value = 'Enforce answer'
+  }
+  emit('toggle-required-request')
+}
+
+const showRequiredText = ref(false)
 </script>
 <template>
   <div class="flex flex-col pt-10">
@@ -35,12 +52,26 @@ const closeMenu = [
       }}</span>
       <textarea
         @keydown.enter.prevent
-        class="w-full py-2 pl-3 pr-2 bg-inherit transition focus:border-none mb-1 text-2xl font-bold min-w-64 max-h-16 rounded resize-none focus:outline-2 focus:outline-dashed focus:outline-slate-300"
+        class="relative w-full py-2 pl-3 pr-2 bg-inherit transition focus:border-none mb-1 text-2xl font-bold min-w-64 max-h-16 rounded resize-none focus:outline-2 focus:outline-dashed focus:outline-slate-300"
         type="text"
         placeholder="Click to edit prompt"
         maxlength="30"
         rows="2"
       ></textarea>
+      <img
+        v-show="isRequired"
+        @mouseover="showRequiredText = true"
+        @mouseleave="showRequiredText = false"
+        class="absolute right-0 top-0 select-none"
+        src="./icons/Enforced.svg"
+        alt="is required"
+      />
+      <div
+        v-show="showRequiredText"
+        class="text-sm text-slate-400 absolute -top-4 right-6 text-nowrap"
+      >
+        (This question will be required for users)
+      </div>
     </div>
     <div class="relative">
       <img
@@ -62,9 +93,10 @@ const closeMenu = [
       >
         <div class="flex flex-col">
           <button
+            @click="toggleRequiredRequest"
             class="text-left py-1 min-w-36 pl-3 text-black transition hover:bg-slate-200 cursor-pointer active:bg-slate-300"
           >
-            Enforce Answer
+            {{ requiredText }}
           </button>
           <button
             @click="deleteCard"
