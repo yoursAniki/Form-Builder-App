@@ -117,7 +117,7 @@ const toggleRequiredRequest = (card) => {
         :sequenceNumber="card.order"
       />
     </div>
-    <div v-else class="text-slate-400 text-lg py-1 px-2 mt-16 border-2 border-slate-300">
+    <div v-else class="text-slate-400 text-lg py-1 px-2 mt-16">
       You didn't add any questions
     </div>
 

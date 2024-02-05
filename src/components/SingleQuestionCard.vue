@@ -146,7 +146,7 @@ const showRequiredText = ref(false)
           @click="addOption"
           class="border-2 rounded p-2 cursor-pointer select-none transition active:bg-slate-200 my-1 flex justify-center items-center"
         >
-          <img class="-ml-1" src="./icons/plus.svg" alt="plus" />
+          <img class="-ml-1 px-1 pr-2" src="./icons/plus.svg" alt="plus" />
           Add option
         </div>
       </div>
