@@ -40,21 +40,27 @@ const deleteAllForms = () => {}
     @confirm-request="deleteAllForms"
   />
 
-  <div class="md:pt-12 md:px-24 pt-6 sm:px-8 px-4">
-    <div
-      class="flex items-start justify-center md:gap-8 sm:gap-6 gap-3 sm:justify-normal flex-wrap"
-    >
+  <div class="md:pt-12 md:px-20 pt-6 sm:px-8 px-4 pb-6">
+    <div class="flex items-start gap-8 xl:justify-normal flex-wrap justify-center">
       <router-link to="/builder">
         <div
-          class="whitespace-nowrap md:py-20 md:px-16 sm:py-16 sm:px-8 sm:text-lg py-8 px-2 border-2 rounded text-gray-400 cursor-pointer transition hover:-translate-x-2 hover:-translate-y-2 active:bg-slate-200 select-none hover:shadow-md shadow-sm"
+          class="flex items-center justify-center w-72 h-48 whitespace-nowrap text-lg border-2 rounded text-gray-400 cursor-pointer transition hover:-translate-x-2 hover:-translate-y-2 active:bg-slate-200 select-none hover:shadow-md shadow-sm"
         >
           + Create a form
         </div>
       </router-link>
-      
-        <!-- Добавить адаптивный отступ -->
-        <BaseForm />
 
+      <!-- Добавить адаптивный отступ -->
+      <BaseForm>
+        <template v-slot:title>
+          My first form for my new company "ORC Company" like VKontakte
+        </template>
+        <template v-slot:date> Updated a week ago </template>
+      </BaseForm>
+      <BaseForm>
+        <template v-slot:title> My second form </template>
+        <template v-slot:date> Updated a month ago </template>
+      </BaseForm>
     </div>
   </div>
 </template>
