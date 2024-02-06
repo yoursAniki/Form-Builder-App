@@ -1,4 +1,8 @@
-# Form Builder (like Google Forms)
+# Form Builder
+
+Tired of complex survey tools like Google Forms? Here's my app for you!
+
+#
 
 When making this app, I started from [this template](<https://www.figma.com/file/3wHykXtJYobKSXO5mAsA7M/SimpleForm-(Community)?type=design&node-id=0-1&mode=design&t=RdcYKOOJGCZz45MU-0>).
 

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, getCurrentInstance } from 'vue'
+import { ref, getCurrentInstance, onMounted } from 'vue'
 import { vOnClickOutside } from '@vueuse/components'
 
 defineProps({
@@ -43,6 +43,19 @@ const toggleRequiredRequest = () => {
 }
 
 const showRequiredText = ref(false)
+
+onMounted(() => {
+  document.querySelectorAll('#text-area').forEach((element) => {
+    element.style.height = `46px`
+
+    element.addEventListener('keydown', (e) => {
+      setInterval(() => {
+        e.target.style.height = `46px`
+        e.target.style.height = `${e.target.scrollHeight}px`
+      }, 0)
+    })
+  })
+})
 </script>
 <template>
   <div class="flex flex-col pt-10">
@@ -51,12 +64,12 @@ const showRequiredText = ref(false)
         sequenceNumber
       }}</span>
       <textarea
-        @keydown.enter.prevent
-        class="relative w-full py-2 pl-3 pr-2 bg-inherit transition focus:border-none mb-1 text-2xl font-bold min-w-64 max-h-16 rounded resize-none focus:outline-2 focus:outline-dashed focus:outline-slate-300"
+        id="text-area"
+        class="overflow-hidden w-full py-2 pl-3 pr-2 bg-inherit transition focus:border-none mb-1 text-2xl font-bold min-w-64 rounded resize-none focus:outline-2 focus:outline-dashed focus:outline-slate-300"
         type="text"
         placeholder="Click to edit prompt"
-        maxlength="30"
-        rows="2"
+        maxlength="60"
+        @keydown.enter.prevent
       ></textarea>
       <img
         v-show="isRequired"
@@ -73,7 +86,7 @@ const showRequiredText = ref(false)
         (This question will be required for users)
       </div>
     </div>
-    <div class="relative">
+    <div class="relative basis-full grow">
       <img
         src="./icons/Short.svg"
         class="absolute -left-5 text-lg font-black cursor-pointer select-none w-4 h-4"
@@ -108,11 +121,11 @@ const showRequiredText = ref(false)
       </div>
       <textarea
         @keydown.enter.prevent
-        class="w-full py-2 px-2 bg-slate-200 placeholder:text-slate-500 outline-none rounded resize-none transition focus:text-slate-950 text-slate-400"
+        id="text-area"
+        class="overflow-hidden w-full py-2 px-2 bg-slate-200 placeholder:text-slate-500 outline-none rounded resize-none transition focus:text-slate-950 text-slate-400"
         type="text"
         placeholder="Click to add placeholder text"
-        maxlength="25"
-        rows="1"
+        maxlength="50"
       ></textarea>
     </div>
   </div>
