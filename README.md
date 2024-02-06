@@ -4,7 +4,7 @@ Tired of complex survey tools like Google Forms? Here's my app for you!
 
 #
 
-When making this app, I started from [this template](<https://www.figma.com/file/3wHykXtJYobKSXO5mAsA7M/SimpleForm-(Community)?type=design&node-id=0-1&mode=design&t=RdcYKOOJGCZz45MU-0>).
+When making this app, I started from [this template](<https://www.figma.com/community/file/847634156194273771/simpleform?searchSessionId=lsari9wg-yurmz56rq4p>).
 
 You can try my app on [Github pages](https://yoursaniki.github.io/Form-Builder-App/#/).
 
