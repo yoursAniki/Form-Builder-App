@@ -14,7 +14,9 @@ html {
   height: 100%;
 }
 
-/* Styles scrollbar */
+/* 
+* Styles for scrollbar 
+ */
 ::-webkit-scrollbar {
   width: 15px;
 }

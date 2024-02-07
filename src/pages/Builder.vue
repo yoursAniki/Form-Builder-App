@@ -120,7 +120,7 @@ const goHomePage = () => {
   <BaseModal
     v-if="isWarningModalOpen"
     @close="isWarningModalOpen = false"
-    modalInner="Do you really want to leave this page? The changes will not be saved"
+    modalInner="Do you really want to leave this page? The changes will not be saved."
     @confirm-request="goHomePage"
   />
 
