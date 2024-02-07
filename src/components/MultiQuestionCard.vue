@@ -110,12 +110,14 @@ onMounted(() => {
       <img
         src="./icons/Multi.svg"
         class="absolute top-3 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4"
+        alt="multi"
       />
       <img
         ref="ignored"
         @click="toggleMenu"
         src="./icons/Group.svg"
         class="absolute top-9 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4 active:bg-slate-200 rounded"
+        alt="menu"
       />
       <div
         v-on-click-outside="closeMenu"

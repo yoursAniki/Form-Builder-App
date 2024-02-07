@@ -97,7 +97,7 @@ onMounted(() => {
         @click="toggleMenu"
         src="./icons/Group.svg"
         class="absolute top-6 -left-5 text-lg font-black cursor-pointer select-none w-4 h-4 active:bg-slate-200 rounded"
-        alt="group"
+        alt="menu"
       />
       <div
         v-on-click-outside="closeMenu"
