@@ -106,7 +106,7 @@ onMounted(() => {
         (This question will be required for users)
       </div>
     </div>
-    <div class="elative basis-full grow">
+    <div class="relative basis-full grow">
       <img
         src="./icons/Single.svg"
         class="absolute top-3 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4"
