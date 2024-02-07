@@ -21,7 +21,7 @@ const deleteAllForms = () => {}
     <template v-slot:title> Your Forms </template>
 
     <template v-slot:button>
-      <!-- Здесь можно что-то разместить -->
+      <!-- Здесь можно разместить еще кнопку -->
       <div></div>
 
       <button
@@ -50,7 +50,6 @@ const deleteAllForms = () => {}
         </div>
       </router-link>
 
-      <!-- Добавить адаптивный отступ -->
       <BaseForm>
         <template v-slot:title>
           My first form for my new company "ORC Company" like VKontakte

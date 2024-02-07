@@ -1,6 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
+import { useRouter } from 'vue-router'
 
 import Header from '../components/Header.vue'
 import BaseModal from '@/components/BaseModal.vue'
@@ -49,8 +50,6 @@ const deleteAllCards = () => {
   localStorage.setItem('cards', JSON.stringify(cards.value))
 }
 
-const isModalOpen = ref(false)
-
 const updateSequenceNumbers = () => {
   cards.value.forEach((card, index) => {
     card.order = index + 1
@@ -61,6 +60,8 @@ watch(cards, () => {
   updateSequenceNumbers()
 })
 
+const isModalOpen = ref(false)
+
 const openModal = () => {
   isModalOpen.value = true
   document.body.style.overflow = 'hidden'
@@ -69,11 +70,38 @@ const openModal = () => {
 const toggleRequiredRequest = (card) => {
   card.isRequired = !card.isRequired
 }
+
+const isFormEmpty = () => {
+  return cardsCount.value === 0
+}
+
+const cardsCount = computed(() => {
+  return cards.value.length
+})
+
+const isWarningModalOpen = ref(false)
+
+const openWarningModal = () => {
+  isWarningModalOpen.value = true
+  document.body.style.overflow = 'hidden'
+}
+
+const router = useRouter()
+
+const goHomePage = () => {
+  router.push('/')
+  deleteAllCards()
+}
 </script>
 
 <template>
   <Header>
-    <template v-slot:title>SimpleForms</template>
+    <template v-slot:title>
+      <router-link to="/">
+        <div v-show="isFormEmpty()">SimpleForms</div>
+      </router-link>
+      <div v-show="!isFormEmpty()" @click="openWarningModal()">SimpleForms</div>
+    </template>
 
     <template v-slot:button>
       <button
@@ -89,6 +117,13 @@ const toggleRequiredRequest = (card) => {
     </template>
   </Header>
 
+  <BaseModal
+    v-if="isWarningModalOpen"
+    @close="isWarningModalOpen = false"
+    modalInner="Do you really want to leave this page? The changes will not be saved"
+    @confirm-request="goHomePage"
+  />
+
   <div class="flex justify-center text-center flex-col m-auto items-center pt-12 px-8">
     <button
       @click="openModal"
@@ -97,7 +132,7 @@ const toggleRequiredRequest = (card) => {
       Delete All
     </button>
 
-    <!-- Переносить строчки в modalInner во избежание выхода содержимого за рамки окна -->
+    <!-- * Переносить строчки в modalInner во избежание выхода содержимого за рамки окна -->
     <BaseModal
       v-if="isModalOpen"
       @close="isModalOpen = false"
@@ -154,5 +189,3 @@ const toggleRequiredRequest = (card) => {
     </div>
   </div>
 </template>
-
-<style></style>
