@@ -68,10 +68,10 @@ onMounted(() => {
     element.style.height = `46px`
 
     element.addEventListener('keydown', (e) => {
-      setInterval(() => {
+      requestAnimationFrame(() => {
         e.target.style.height = `46px`
         e.target.style.height = `${e.target.scrollHeight}px`
-      }, 0)
+      })
     })
   })
 })

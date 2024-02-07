@@ -11,6 +11,7 @@
 <style>
 html {
   background-color: rgb(241 245 249);
+  height: 100%;
 }
 
 /* Styles scrollbar */
