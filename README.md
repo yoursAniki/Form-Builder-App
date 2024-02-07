@@ -2,9 +2,17 @@
 
 Tired of complex survey tools like Google Forms? Here's my app for you!
 
-#
+## Tech stack
+
+```
+VUEJS 3(COMPOSITION API) + TAILWINDCSS + VITE
+```
+
+## Figma
 
 When making this app, I started from [this template](https://www.figma.com/community/file/847634156194273771/simpleform?searchSessionId=lsari9wg-yurmz56rq4p).
+
+## Website
 
 You can try my app on [Github pages](https://yoursaniki.github.io/Form-Builder-App/#/).
 
