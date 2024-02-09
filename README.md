@@ -2,6 +2,10 @@
 
 Tired of complex survey tools like Google Forms? Here's my app for you!
 
+![main page](image.png)
+
+![form constructor](image-1.png)
+
 ## Tech stack
 
 ```
