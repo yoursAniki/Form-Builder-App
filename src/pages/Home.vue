@@ -52,7 +52,7 @@ const deleteAllForms = () => {}
 
       <BaseForm>
         <template v-slot:title>
-          My first form for my new company "ORC Company" like VKontakte
+          My first form for my new company
         </template>
         <template v-slot:date> Updated a week ago </template>
       </BaseForm>
