@@ -63,6 +63,7 @@ const toggleRequiredRequest = () => {
 
 const showRequiredText = ref(false)
 
+//TODO ПЕРЕНЕСТИ В ФУНКЦИЮ RESIZE
 onMounted(() => {
   document.querySelectorAll('#text-area').forEach((element) => {
     element.style.height = `46px`
@@ -75,6 +76,24 @@ onMounted(() => {
     })
   })
 })
+
+const resizeOpt = (opt) => {
+  const scrollTop = opt.scrollTop // Сохраняем текущее положение вертикального скролла
+  const cursorPosition = opt.selectionStart // Сохраняем текущее положение курсора
+
+  opt.value = opt.value.trim()
+  opt.value += ' '
+
+  opt.style.height = 'auto'
+  let newHeight = opt.scrollHeight + 'px'
+
+  if (opt.style.height !== newHeight) {
+    opt.style.height = newHeight
+  }
+
+  opt.scrollTop = scrollTop // Восстанавливаем положение вертикального скролла
+  opt.setSelectionRange(cursorPosition, cursorPosition) // Восстанавливаем положение курсора
+}
 </script>
 
 <template>
@@ -139,20 +158,20 @@ onMounted(() => {
           </button>
         </div>
       </div>
-      <div class="py-2 px-2 text-slate-700 outline-none resize-none flex max-w-xs flex-wrap">
+      <div class="py-2 px-2 text-slate-700 outline-none resize-none flex max-w-xs flex-wrap w-full">
         <div
           class="rounded pb-2 pt-2 mr-2 border-2 flex px-2 my-1"
           v-for="option in options"
           :key="option"
         >
           <textarea
-            wrap="off"
+            wrap="on"
             @keydown.enter.prevent
-            class="resize-none bg-inherit outline-none overflow-hidden text-base text-black"
+            class="resize-none bg-inherit outline-none overflow-hidden text-base text-black w-full"
             name="option"
             maxlength="50"
-            cols="5"
             rows="1"
+            @input="resizeOpt($event.target)"
           >
           </textarea>
           <CloseButton @click="delOption(option)" class="pl-1" />
