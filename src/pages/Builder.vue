@@ -118,7 +118,7 @@ const goHomePage = () => {
 
     <template v-slot:button>
       <button
-        class="text-xs w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10 dark:hover:bg-neutral-700 dark:active:bg-neutral-600"
+        class="text-xs w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10 dark:hover:bg-neutral-700 dark:active:bg-neutral-600 dark:text-neutral-200"
       >
         View Preview
       </button>
@@ -140,6 +140,7 @@ const goHomePage = () => {
   <div class="bg-slate-100 min-h-screen flex-grow dark:bg-neutral-900">
     <div class="flex justify-center text-center flex-col m-auto items-center pt-12 px-8">
       <button
+        v-if="cards && cards.length > 0"
         @click="openModal"
         class="text-red-500 border-2 md:rounded-md rounded transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 active:border-slate-300 select-none shadow text-lg w-36 h-10 dark:hover:bg-neutral-800 dark:active:bg-neutral-700"
       >
