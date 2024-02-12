@@ -60,12 +60,13 @@ onMounted(() => {
 <template>
   <div class="flex flex-col pt-10">
     <div class="relative">
-      <span class="absolute top-3 -left-4 text-lg text-slate-400 select-none">{{
-        sequenceNumber
-      }}</span>
+      <span
+        class="absolute top-3 -left-4 text-lg text-slate-400 select-none dark:text-neutral-50"
+        >{{ sequenceNumber }}</span
+      >
       <textarea
         id="text-area"
-        class="overflow-hidden w-full py-2 pl-3 pr-2 bg-inherit transition focus:border-none mb-1 text-2xl font-bold min-w-64 rounded resize-none focus:outline-2 focus:outline-dashed focus:outline-slate-300"
+        class="overflow-hidden w-full py-2 pl-3 pr-2 bg-inherit transition focus:border-none mb-1 text-2xl font-bold min-w-64 rounded resize-none focus:outline-2 focus:outline-dashed focus:outline-slate-300 text-black dark:text-neutral-100"
         type="text"
         placeholder="Click to edit prompt"
         maxlength="60"
@@ -122,7 +123,7 @@ onMounted(() => {
       <textarea
         @keydown.enter.prevent
         id="text-area"
-        class="overflow-hidden w-full py-2 px-2 bg-slate-200 placeholder:text-slate-500 outline-none rounded resize-none transition focus:text-slate-950 text-slate-400"
+        class="overflow-hidden w-full py-2 px-2 bg-slate-200 placeholder:text-slate-500 outline-none rounded resize-none transition focus:text-slate-950 text-slate-400 dark:focus:text-neutral-950 dark:text-neutral-500"
         type="text"
         placeholder="Click to add placeholder text"
         maxlength="50"

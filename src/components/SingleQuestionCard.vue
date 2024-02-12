@@ -99,12 +99,13 @@ const resizeOpt = (opt) => {
 <template>
   <div class="flex flex-col pt-10">
     <div class="relative">
-      <span class="absolute top-3 -left-4 text-lg text-slate-400 select-none">{{
-        sequenceNumber
-      }}</span>
+      <span
+        class="absolute top-3 -left-4 text-lg text-slate-400 select-none dark:text-neutral-50"
+        >{{ sequenceNumber }}</span
+      >
       <textarea
         id="text-area"
-        class="overflow-hidden w-full py-2 pl-3 pr-2 bg-inherit transition focus:border-none mb-1 text-2xl font-bold outline-none min-w-64 rounded resize-none focus:outline-2 focus:outline-dashed focus:outline-slate-300"
+        class="overflow-hidden w-full py-2 pl-3 pr-2 bg-inherit transition focus:border-none mb-1 text-2xl font-bold outline-none min-w-64 rounded resize-none focus:outline-2 focus:outline-dashed focus:outline-slate-300 text-black dark:text-neutral-100"
         type="text"
         placeholder="Click to edit prompt"
         maxlength="60"
@@ -158,7 +159,7 @@ const resizeOpt = (opt) => {
           </button>
         </div>
       </div>
-      <div class="py-2 px-2 text-slate-700 outline-none resize-none flex max-w-xs flex-wrap w-full">
+      <div class="py-2 px-2 outline-none resize-none flex max-w-xs flex-wrap w-full">
         <div
           class="rounded pb-2 pt-2 mr-2 border-2 flex px-2 my-1"
           v-for="option in options"
@@ -167,7 +168,7 @@ const resizeOpt = (opt) => {
           <textarea
             wrap="on"
             @keydown.enter.prevent
-            class="resize-none bg-inherit outline-none overflow-hidden text-base text-black w-full"
+            class="resize-none bg-inherit outline-none overflow-hidden text-base text-black w-full dark:text-white"
             name="option"
             maxlength="50"
             rows="1"
@@ -178,7 +179,7 @@ const resizeOpt = (opt) => {
         </div>
         <div
           @click="addOption"
-          class="border-2 rounded p-2 cursor-pointer select-none transition active:bg-slate-200 my-1 flex justify-center items-center"
+          class="text-slate-700 dark:text-neutral-300 border-2 rounded p-2 cursor-pointer select-none transition active:bg-slate-200 my-1 flex justify-center items-center"
         >
           <img class="-ml-1 px-1 pr-2" src="./icons/plus.svg" alt="plus" />
           Add option
