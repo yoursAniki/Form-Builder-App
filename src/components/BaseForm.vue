@@ -4,12 +4,14 @@ import TrashButton from '@/components/TrashButton.vue'
 
 <template>
   <div
-    class="bg-white whitespace-nowrap border-2 rounded text-gray-400 transition-shadow select-none shadow-md hover:shadow-lg w-72 h-48 overflow-hidden"
+    class="bg-white whitespace-nowrap border-2 rounded text-gray-400 transition-shadow select-none shadow-md hover:shadow-lg w-72 h-48 overflow-hidden dark:text-neutral-100 dark:bg-neutral-900"
   >
     <div class="flex flex-col min-h-full">
       <div class="m-3 mx-4 flex-auto">
         <!-- Name of the form -->
-        <div class="font-bold text-xl text-black text-wrap truncate select-text">
+        <div
+          class="font-bold text-xl text-black text-wrap truncate select-text dark:text-neutral-100"
+        >
           <slot name="title"></slot>
         </div>
         <!-- Date of update -->
@@ -18,7 +20,9 @@ import TrashButton from '@/components/TrashButton.vue'
         </div>
       </div>
       <div class="m-3 mx-4 flex justify-between">
-        <button class="bg-slate-100 rounded p-1 px-2 hover:bg-slate-200 transition">
+        <button
+          class="bg-slate-100 rounded p-1 px-2 hover:bg-slate-200 transition dark:bg-neutral-800"
+        >
           PUBLISHED
         </button>
 

@@ -36,7 +36,7 @@ const confirmation = () => {
     @keydown.enter="confirmation"
     tabindex="-1"
     ref="modal"
-    class="fixed inset-0 z-10"
+    class="fixed inset-0 z-10 dark:text-neutral-100"
   >
     <transition
       appear
@@ -50,7 +50,10 @@ const confirmation = () => {
       <div v-if="isOpen" @click="closeModal" class="fixed inset-0 bg-black bg-opacity-80"></div>
     </transition>
 
-    <div v-if="isOpen" class="bg-white rounded sm:max-w-sm mx-auto my-8 relative max-w-72">
+    <div
+      v-if="isOpen"
+      class="bg-white rounded sm:max-w-sm mx-auto my-8 relative max-w-72 dark:bg-neutral-900"
+    >
       <div class="p-2 absolute right-0">
         <CloseButton @click="closeModal" />
       </div>
@@ -60,13 +63,13 @@ const confirmation = () => {
       <div class="p-3 flex justify-center gap-3">
         <button
           @click="closeModal"
-          class="text-red-500 w-20 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 active:border-slate-300 select-none shadow text-lg"
+          class="text-red-500 w-20 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 active:border-slate-300 select-none shadow text-lg dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:active:bg-neutral-700"
         >
           No
         </button>
         <button
           @click="confirmation"
-          class="text-green-500 w-20 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 active:border-slate-300 select-none shadow text-lg"
+          class="text-green-500 w-20 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 active:border-slate-300 select-none shadow text-lg dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:active:bg-neutral-700"
         >
           Yes
         </button>

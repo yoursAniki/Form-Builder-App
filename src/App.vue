@@ -1,19 +1,29 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+
+import ModeSwitcher from './components/ModeSwitcher.vue'
+
+const isLight = ref(true)
+
+const lightMode = ref('light')
+
+const switchLightMode = () => {
+  isLight.value = !isLight.value
+
+  lightMode.value = isLight.value === true ? 'light' : 'dark'
+}
+</script>
 
 <template>
-  <div class="bg-slate-100">
-    <div class="">
-      <router-view></router-view>
-    </div>
+  <div class="bg-slate-100 min-h-screen relative dark:bg-neutral-900" :className="lightMode">
+    <router-view></router-view>
+  </div>
+  <div class="absolute bottom-5 right-5">
+    <ModeSwitcher @lightmode-switch="switchLightMode" />
   </div>
 </template>
 
 <style>
-html {
-  background-color: rgb(241 245 249);
-  height: 100%;
-}
-
 /* 
 * Styles for scrollbar 
  */
