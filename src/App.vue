@@ -18,7 +18,7 @@ const switchLightMode = () => {
   <div class="bg-slate-100 min-h-screen relative dark:bg-neutral-900" :className="lightMode">
     <router-view></router-view>
   </div>
-  <div class="absolute top-24 left-4">
+  <div class="absolute top-5 translate-x-[-50%] left-1/2">
     <ModeSwitcher @lightmode-switch="switchLightMode" />
   </div>
 </template>

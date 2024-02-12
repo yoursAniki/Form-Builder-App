@@ -137,7 +137,7 @@ const goHomePage = () => {
     @confirm-request="goHomePage"
   />
 
-  <div class="bg-white min-h-screen flex-grow dark:bg-neutral-900">
+  <div class="bg-slate-100 min-h-screen flex-grow dark:bg-neutral-900">
     <div class="flex justify-center text-center flex-col m-auto items-center pt-12 px-8">
       <button
         @click="openModal"
