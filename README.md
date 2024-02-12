@@ -9,7 +9,7 @@ Tired of complex survey tools like Google Forms? Here's my app for you!
 ## Tech stack
 
 ```
-VUEJS 3(COMPOSITION API) + TAILWINDCSS + VITE + ESLINT + PRETTIER
+VUEJS 3(COMPOSITION API) + TAILWINDCSS + DAISYUI + VITE + ESLINT + PRETTIER
 ```
 
 ## Figma
