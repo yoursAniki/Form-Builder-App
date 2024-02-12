@@ -3,7 +3,7 @@
 
 <template>
   <header
-    class="px-4 py-5 bg-white text-lg text-black flex justify-between items-center md:px-8 shadow-sm dark:bg-neutral-800 dark:text-neutral-300"
+    class="px-4 py-5 bg-white text-lg flex justify-between items-center md:px-8 shadow-sm dark:bg-neutral-800"
   >
     <h1 class="font-bold select-none cursor-pointer">
       <slot name="title"></slot>

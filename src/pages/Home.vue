@@ -18,7 +18,9 @@ const deleteAllForms = () => {}
 
 <template>
   <Header>
-    <template v-slot:title> Your Forms </template>
+    <template v-slot:title>
+      <div class="text-black dark:text-neutral-300">Your Forms</div>
+    </template>
 
     <template v-slot:button>
       <!-- Здесь можно разместить еще кнопку -->
@@ -26,7 +28,7 @@ const deleteAllForms = () => {}
 
       <button
         @click="openModal"
-        class="text-sm text-red-500 w-20 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:active:bg-neutral-600 dark:text-neutral-300"
+        class="text-sm text-red-500 w-20 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:active:bg-neutral-600 dark:text-red-400"
       >
         Remove All
       </button>
@@ -40,7 +42,9 @@ const deleteAllForms = () => {}
     @confirm-request="deleteAllForms"
   />
 
-  <div class="md:pt-12 md:px-20 pt-6 sm:px-8 px-4 pb-6 dark:bg-neutral-900 min-h-screen flex-frow">
+  <div
+    class="bg-slate-100 md:pt-12 md:px-20 pt-6 sm:px-8 px-4 pb-6 dark:bg-neutral-900 min-h-screen flex-frow"
+  >
     <div class="flex items-start gap-8 xl:justify-normal flex-wrap justify-center">
       <router-link to="/builder">
         <div

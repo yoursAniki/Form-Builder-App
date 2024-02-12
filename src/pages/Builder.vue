@@ -105,9 +105,15 @@ const goHomePage = () => {
   <Header>
     <template v-slot:title>
       <router-link to="/">
-        <div v-show="isFormEmpty()">SimpleForms</div>
+        <div class="text-black dark:text-neutral-300" v-show="isFormEmpty()">SimpleForms</div>
       </router-link>
-      <div v-show="!isFormEmpty()" @click="openWarningModal()">SimpleForms</div>
+      <div
+        class="text-black dark:text-neutral-300"
+        v-show="!isFormEmpty()"
+        @click="openWarningModal()"
+      >
+        SimpleForms
+      </div>
     </template>
 
     <template v-slot:button>

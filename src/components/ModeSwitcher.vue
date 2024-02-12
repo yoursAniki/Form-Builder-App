@@ -9,7 +9,7 @@ const switchMode = () => {
 </script>
 
 <template>
-  <div>
+  <div class="select-none">
     <label class="swap swap-rotate">
       <!-- this hidden checkbox controls the state -->
       <input type="checkbox" />
