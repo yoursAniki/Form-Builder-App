@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 
 import ModeSwitcher from './components/ModeSwitcher.vue'
 
@@ -12,6 +12,20 @@ const switchLightMode = () => {
 
   lightMode.value = isLight.value === true ? 'light' : 'dark'
 }
+
+onMounted(() => {
+  lightMode.value = JSON.parse(localStorage.getItem('lightMode')) || 'light'
+})
+
+watch(
+  lightMode,
+  (newVal) => {
+    localStorage.setItem('lightMode', JSON.stringify(newVal))
+  },
+  {
+    deep: true
+  }
+)
 </script>
 
 <template>

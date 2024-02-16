@@ -1,22 +1,42 @@
 <script setup>
-import { getCurrentInstance } from 'vue'
+import { getCurrentInstance, ref, onMounted, watch } from 'vue'
 
 const { emit } = getCurrentInstance()
 
-const switchMode = () => {
+const isDark = ref(false)
+
+const switchModeRequest = () => {
   emit('lightmode-switch')
 }
+
+const switchMode = () => {
+  isDark.value = !isDark.value
+}
+
+onMounted(() => {
+  isDark.value = JSON.parse(localStorage.getItem('isDark')) || false
+})
+
+watch(
+  isDark,
+  (newVal) => {
+    localStorage.setItem('isDark', JSON.stringify(newVal))
+  },
+  {
+    deep: true
+  }
+)
 </script>
 
 <template>
   <div class="select-none">
     <label class="swap swap-rotate">
       <!-- this hidden checkbox controls the state -->
-      <input type="checkbox" />
+      <input type="checkbox" v-model="isDark" @click="switchMode()" />
 
       <!-- sun icon -->
       <svg
-        @click="switchMode()"
+        @click="switchModeRequest"
         class="swap-on fill-current w-10 h-10"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -28,7 +48,7 @@ const switchMode = () => {
 
       <!-- moon icon -->
       <svg
-        @click="switchMode()"
+        @click="switchModeRequest"
         class="swap-off fill-current w-10 h-10"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"

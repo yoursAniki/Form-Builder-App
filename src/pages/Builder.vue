@@ -118,7 +118,7 @@ const goHomePage = () => {
 
     <template v-slot:button>
       <button
-        class="text-xs w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10 dark:hover:bg-neutral-700 dark:active:bg-neutral-600 dark:text-neutral-200"
+        class="text-slate-500 text-xs w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10 dark:hover:bg-neutral-700 dark:active:bg-neutral-600 dark:text-neutral-200"
       >
         View Preview
       </button>
