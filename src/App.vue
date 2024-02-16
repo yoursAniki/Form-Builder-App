@@ -1,31 +1,19 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onBeforeMount, watch, computed } from 'vue'
+import { useStore } from 'vuex'
 
 import ModeSwitcher from './components/ModeSwitcher.vue'
 
-const isLight = ref(true)
-
-const lightMode = ref('light')
-
-const switchLightMode = () => {
-  isLight.value = !isLight.value
-
-  lightMode.value = isLight.value === true ? 'light' : 'dark'
-}
-
-onMounted(() => {
-  lightMode.value = JSON.parse(localStorage.getItem('lightMode')) || 'light'
+onBeforeMount(() => {
+  const savedState = localStorage.getItem('isLightMode')
+  store.commit('setIsLightMode', savedState !== null ? JSON.parse(savedState) : true)
 })
 
-watch(
-  lightMode,
-  (newVal) => {
-    localStorage.setItem('lightMode', JSON.stringify(newVal))
-  },
-  {
-    deep: true
-  }
-)
+const store = useStore()
+
+const lightMode = computed(() => {
+  return store.state.isLightMode ? 'light' : 'dark'
+})
 </script>
 
 <template>
@@ -33,7 +21,7 @@ watch(
     <router-view></router-view>
   </div>
   <div class="absolute top-5 translate-x-[-50%] left-1/2">
-    <ModeSwitcher @lightmode-switch="switchLightMode" />
+    <ModeSwitcher />
   </div>
 </template>
 

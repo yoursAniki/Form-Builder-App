@@ -1,42 +1,35 @@
 <script setup>
-import { getCurrentInstance, ref, onMounted, watch } from 'vue'
+import { getCurrentInstance, ref, onBeforeMount, watchEffect } from 'vue'
+import { useStore } from 'vuex'
+
+const store = useStore()
+const isLightMode = store.state.isLightMode
 
 const { emit } = getCurrentInstance()
 
-const isDark = ref(false)
-
-const switchModeRequest = () => {
-  emit('lightmode-switch')
-}
-
 const switchMode = () => {
-  isDark.value = !isDark.value
+  store.commit('toggleDarkMode')
 }
 
-onMounted(() => {
-  isDark.value = JSON.parse(localStorage.getItem('isDark')) || false
+onBeforeMount(() => {
+  const savedState = localStorage.getItem('isLightMode')
+  store.commit('setIsLightMode', savedState !== null ? JSON.parse(savedState) : true)
 })
 
-watch(
-  isDark,
-  (newVal) => {
-    localStorage.setItem('isDark', JSON.stringify(newVal))
-  },
-  {
-    deep: true
-  }
-)
+watchEffect(() => {
+  localStorage.setItem('isLightMode', JSON.stringify(store.state.isLightMode))
+})
 </script>
 
 <template>
   <div class="select-none">
     <label class="swap swap-rotate">
       <!-- this hidden checkbox controls the state -->
-      <input type="checkbox" v-model="isDark" @click="switchMode()" />
+      <input type="checkbox" :checked="isLightMode" />
 
       <!-- sun icon -->
       <svg
-        @click="switchModeRequest"
+        @click="switchMode()"
         class="swap-on fill-current w-10 h-10"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -48,7 +41,7 @@ watch(
 
       <!-- moon icon -->
       <svg
-        @click="switchModeRequest"
+        @click="switchMode()"
         class="swap-off fill-current w-10 h-10"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
