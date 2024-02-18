@@ -29,12 +29,14 @@ const closeDrawer = () => {
 
 provide('drawerActions', {
   openDrawer,
-  closeDrawer
+  closeDrawer,
+  isDrawerOpened
 })
 </script>
 
 <template>
   <SettingsDrawer v-show="isDrawerOpened" />
+
   <Header>
     <template v-slot:title>
       <div class="text-black dark:text-neutral-300">Your Forms</div>

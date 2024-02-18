@@ -32,6 +32,7 @@ const confirmation = () => {
 
 <template>
   <div
+    v-auto-animate
     @keydown.esc="closeModal"
     @keydown.enter="confirmation"
     tabindex="-1"
