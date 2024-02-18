@@ -22,7 +22,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div class="select-none">
+  <div class="select-none inline-flex">
     <label class="cursor-pointer grid place-items-center">
       <input
         :checked="!isLightMode"

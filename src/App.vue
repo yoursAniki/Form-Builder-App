@@ -17,12 +17,12 @@ const lightMode = computed(() => {
 </script>
 
 <template>
-  <div class="bg-slate-100 min-h-screen relative dark:bg-neutral-900" :className="lightMode">
+  <div class="z-20 bg-slate-100 min-h-screen relative dark:bg-neutral-900" :className="lightMode">
     <router-view></router-view>
   </div>
-  <div class="absolute top-5 translate-x-[-50%] left-1/2">
+  <!-- <div class="absolute top-5 translate-x-[-50%] left-1/2">
     <ModeSwitcher />
-  </div>
+  </div> -->
 </template>
 
 <style>

@@ -5,7 +5,7 @@
   <header
     class="px-4 py-5 bg-white text-lg flex justify-between items-center md:px-8 shadow-sm dark:bg-neutral-800"
   >
-    <h1 class="font-bold select-none cursor-pointer">
+    <h1 class="font-bold select-none flex gap-1">
       <slot name="title"></slot>
     </h1>
 

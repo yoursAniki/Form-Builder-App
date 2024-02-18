@@ -1,10 +1,12 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
-import { ref } from 'vue'
+import { ref, provide } from 'vue'
 
 import BaseModal from '@/components/BaseModal.vue'
 import Header from '../components/Header.vue'
 import BaseForm from '@/components/BaseForm.vue'
+import SettingsDrawer from '@/components/SettingsDrawer.vue'
+import SettingsButton from '@/components/SettingsButton.vue'
 
 const isModalOpen = ref(false)
 
@@ -14,12 +16,29 @@ const openModal = () => {
 }
 //TODO: Организовыать удаление всех форм
 const deleteAllForms = () => {}
+
+const isDrawerOpened = ref(false)
+
+const openDrawer = () => {
+  isDrawerOpened.value = true
+}
+
+const closeDrawer = () => {
+  isDrawerOpened.value = false
+}
+
+provide('drawerActions', {
+  openDrawer,
+  closeDrawer
+})
 </script>
 
 <template>
+  <SettingsDrawer v-show="isDrawerOpened" />
   <Header>
     <template v-slot:title>
       <div class="text-black dark:text-neutral-300">Your Forms</div>
+      <SettingsButton @click="openDrawer" />
     </template>
 
     <template v-slot:button>
