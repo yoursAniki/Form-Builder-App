@@ -158,7 +158,7 @@ const resizeOpt = (opt) => {
           </button>
         </div>
       </div>
-      <div class="py-2 px-2 outline-none resize-none flex max-w-xs flex-wrap w-full">
+      <div class="py-2 px-2 outline-none resize-none flex max-w-xs flex-wrap w-full" v-auto-animate>
         <div
           class="rounded pb-2 pt-2 mr-2 border-2 flex px-2 my-1"
           v-for="option in options"
