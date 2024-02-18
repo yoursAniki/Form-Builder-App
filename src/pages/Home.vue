@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
-import { ref, provide } from 'vue'
+import { ref, provide, inject } from 'vue'
 
 import BaseModal from '@/components/BaseModal.vue'
 import Header from '../components/Header.vue'
@@ -39,8 +39,9 @@ provide('drawerActions', {
 
   <Header>
     <template v-slot:title>
-      <div class="text-black dark:text-neutral-300">Your Forms</div>
       <SettingsButton @click="openDrawer" />
+
+      <div class="text-black dark:text-neutral-300">Your Forms</div>
     </template>
 
     <template v-slot:button>
