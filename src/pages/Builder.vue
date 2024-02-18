@@ -155,7 +155,14 @@ const goHomePage = () => {
         @confirm-request="deleteAllCards"
       />
 
-      <div v-if="cards && cards.length > 0" class="flex flex-col">
+      <div
+        v-if="cards.length === 0"
+        class="text-slate-400 text-lg py-1 px-2 mt-6 dark:text-neutral-300"
+      >
+        You didn't add any questions
+      </div>
+
+      <div v-auto-animate class="flex flex-col">
         <component
           v-for="card in cards"
           :key="card.id"
@@ -166,9 +173,6 @@ const goHomePage = () => {
           @toggle-required-request="toggleRequiredRequest(card)"
           :sequenceNumber="card.order"
         />
-      </div>
-      <div v-else class="text-slate-400 text-lg py-1 px-2 mt-6 dark:text-neutral-300">
-        You didn't add any questions
       </div>
 
       <div class="text-lg mt-16 pb-7">

@@ -2,6 +2,7 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 import { store } from './store/store.js'
 import App from './App.vue'
 
@@ -22,5 +23,6 @@ const router = createRouter({
 
 app.use(router)
 app.use(store)
+app.use(autoAnimatePlugin)
 
 app.mount('#app')
