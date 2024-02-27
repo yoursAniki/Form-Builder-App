@@ -9,6 +9,7 @@ import ShortTextCard from '../components/ShortTextCard.vue'
 import LongTextCard from '../components/LongTextCard.vue'
 import SingleQuestionCard from '../components/SingleQuestionCard.vue'
 import MultiQuestionCard from '@/components/MultiQuestionCard.vue'
+import SingleQuestionIcon from '@/components/SingleQuestionIcon.vue'
 
 const components = {
   ShortTextCard,
@@ -198,7 +199,8 @@ const goHomePage = () => {
             @click="addCard('SingleQuestionCard')"
             class="border-2 rounded px-3 py-2 cursor-pointer flex items-center flex-col transition active:bg-slate-200 hover:-translate-x-1 hover:-translate-y-1 select-none hover:shadow-md shadow-sm dark:bg-neutral-800 dark:active:bg-neutral-700 dark:border-neutral-300 dark:text-neutral-300"
           >
-            <img src="../components/icons/Single.svg" alt="single" />
+            <SingleQuestionIcon />
+            <!-- <img src="../components/icons/Single.svg" alt="single" /> -->
             <div class="text-slate-500 dark:text-neutral-300">Single</div>
           </div>
           <button
