@@ -10,6 +10,9 @@ import LongTextCard from '../components/LongTextCard.vue'
 import SingleQuestionCard from '../components/SingleQuestionCard.vue'
 import MultiQuestionCard from '@/components/MultiQuestionCard.vue'
 import SingleQuestionIcon from '@/components/SingleQuestionIcon.vue'
+import ShortTextIcon from '@/components/ShortTextIcon.vue'
+import MultiQuestionIcon from '@/components/MultiQuestionIcon.vue'
+import LongTextIcon from '@/components/LongTextIcon.vue'
 
 const components = {
   ShortTextCard,
@@ -185,14 +188,16 @@ const goHomePage = () => {
             @click="addCard('ShortTextCard')"
             class="border-2 rounded px-3 py-2 cursor-pointer flex items-center flex-col transition active:bg-slate-200 hover:-translate-x-1 hover:-translate-y-1 select-none hover:shadow-md shadow-sm dark:bg-neutral-800 dark:active:bg-neutral-700 dark:border-neutral-300 dark:text-neutral-300"
           >
-            <img src="../components/icons/Short.svg" alt="short" />
+            <ShortTextIcon />
+            <!-- <img src="../components/icons/Short.svg" alt="short" /> -->
             <div class="text-slate-500 dark:text-neutral-300">Short</div>
           </button>
           <button
             @click="addCard('LongTextCard')"
             class="border-2 rounded px-3 py-2 cursor-pointer flex items-center flex-col transition active:bg-slate-200 hover:-translate-x-1 hover:-translate-y-1 select-none hover:shadow-md shadow-sm dark:bg-neutral-800 dark:active:bg-neutral-700 dark:border-neutral-300 dark:text-neutral-300"
           >
-            <img src="../components/icons/Long.svg" alt="long" />
+            <LongTextIcon />
+            <!-- <img src="../components/icons/Long.svg" alt="long" /> -->
             <div class="text-slate-500 dark:text-neutral-300">Long</div>
           </button>
           <div
@@ -207,7 +212,8 @@ const goHomePage = () => {
             @click="addCard('MultiQuestionCard')"
             class="border-2 rounded px-3 py-2 cursor-pointer flex items-center flex-col transition active:bg-slate-200 hover:-translate-x-1 hover:-translate-y-1 select-none hover:shadow-md shadow-sm dark:bg-neutral-800 dark:active:bg-neutral-700 dark:border-neutral-300 dark:text-neutral-300"
           >
-            <img src="../components/icons/Multi.svg" alt="multi" />
+            <MultiQuestionIcon />
+            <!-- <img src="../components/icons/Multi.svg" alt="multi" /> -->
             <div class="text-slate-500 dark:text-neutral-300">Multi</div>
           </button>
         </div>

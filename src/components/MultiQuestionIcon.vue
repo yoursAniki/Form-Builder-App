@@ -1,0 +1,50 @@
+<template>
+  <svg width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Icon/Multi">
+      <rect
+        class="dark:stroke-white"
+        id="Rectangle"
+        x="7.5"
+        y="7.97021"
+        width="7.5"
+        height="7.5"
+        rx="1.5"
+        stroke="#111111"
+        stroke-width="3"
+      />
+      <rect
+        class="dark:stroke-white"
+        id="Rectangle_2"
+        x="21"
+        y="7.97021"
+        width="7.5"
+        height="7.5"
+        rx="1.5"
+        stroke="#111111"
+        stroke-width="3"
+      />
+      <rect
+        class="dark:stroke-white"
+        id="Rectangle_3"
+        x="7.5"
+        y="21.4702"
+        width="7.5"
+        height="7.5"
+        rx="1.5"
+        stroke="#111111"
+        stroke-width="3"
+      />
+      <rect
+        class="dark:stroke-white"
+        id="Rectangle_4"
+        x="21"
+        y="21.4702"
+        width="7.5"
+        height="7.5"
+        rx="1.5"
+        stroke="#111111"
+        stroke-width="3"
+      />
+    </g>
+  </svg>
+</template>

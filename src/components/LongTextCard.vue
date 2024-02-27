@@ -1,6 +1,8 @@
 <script setup>
 import { ref, getCurrentInstance, onMounted } from 'vue'
 import { vOnClickOutside } from '@vueuse/components'
+import LongTextIcon from './LongTextIcon.vue'
+import GroupIcon from './GroupIcon.vue'
 
 defineProps({
   sequenceNumber: Number
@@ -88,18 +90,26 @@ onMounted(() => {
       </div>
     </div>
     <div class="relative basis-full grow">
-      <img
+      <LongTextIcon
+        class="absolute -left-5 text-lg font-black cursor-pointer select-none w-4 h-4"
+      />
+      <!-- <img
         src="./icons/Long.svg"
         class="absolute -left-5 text-lg font-black cursor-pointer select-none w-4 h-4"
         alt="long"
+      /> -->
+      <GroupIcon
+        ref="ignored"
+        @click="toggleMenu"
+        class="absolute top-6 -left-5 text-lg font-black cursor-pointer select-none w-4 h-4 active:bg-slate-200 rounded"
       />
-      <img
+      <!-- <img
         ref="ignored"
         @click="toggleMenu"
         src="./icons/Group.svg"
         class="absolute top-6 -left-5 text-lg font-black cursor-pointer select-none w-4 h-4 active:bg-slate-200 rounded"
         alt="group"
-      />
+      /> -->
       <div
         v-on-click-outside="closeMenu"
         v-show="showMenu"

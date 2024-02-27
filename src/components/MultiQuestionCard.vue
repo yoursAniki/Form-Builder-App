@@ -2,6 +2,9 @@
 import { ref, getCurrentInstance, onMounted } from 'vue'
 import { vOnClickOutside } from '@vueuse/components'
 import CloseButton from './CloseButton.vue'
+import MultiQuestionIcon from './MultiQuestionIcon.vue'
+import GroupIcon from './GroupIcon.vue'
+import PlusIcon from './PlusIcon.vue'
 
 defineProps({
   sequenceNumber: Number
@@ -126,18 +129,26 @@ const resizeOpt = (opt) => {
       </div>
     </div>
     <div class="relative basis-full grow">
-      <img
+      <MultiQuestionIcon
+        class="absolute top-3 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4"
+      />
+      <!-- <img
         src="./icons/Multi.svg"
         class="absolute top-3 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4"
         alt="multi"
+      /> -->
+      <GroupIcon
+        ref="ignored"
+        @click="toggleMenu"
+        class="absolute top-9 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4 active:bg-slate-200 rounded"
       />
-      <img
+      <!-- <img
         ref="ignored"
         @click="toggleMenu"
         src="./icons/Group.svg"
         class="absolute top-9 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4 active:bg-slate-200 rounded"
         alt="menu"
-      />
+      /> -->
       <div
         v-on-click-outside="closeMenu"
         v-show="showMenu"
@@ -180,7 +191,8 @@ const resizeOpt = (opt) => {
           @click="addOption"
           class="text-slate-700 dark:text-neutral-300 border-2 rounded p-2 cursor-pointer select-none transition active:bg-slate-200 my-1 flex justify-center items-center"
         >
-          <img class="-ml-1 px-1 pr-2" src="./icons/plus.svg" alt="plus" />
+          <PlusIcon class="-ml-1 px-1 pr-2" />
+          <!-- <img class="-ml-1 px-1 pr-2" src="./icons/plus.svg" alt="plus" /> -->
           Add option
         </div>
       </div>
