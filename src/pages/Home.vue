@@ -35,7 +35,9 @@ provide('drawerActions', {
 </script>
 
 <template>
-  <SettingsDrawer v-show="isDrawerOpened" />
+  <transition name="slide-transition" leave-active-class="slide-leave-active">
+    <SettingsDrawer v-show="isDrawerOpened" />
+  </transition>
 
   <Header>
     <template v-slot:title>
