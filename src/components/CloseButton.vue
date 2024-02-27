@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
+//* Можно реализовать чистым тайлвиндом
 const closeColor = ref('#CCCCCC')
 const isHovered = ref(false)
 
@@ -34,6 +35,7 @@ const clickChangeColor = () => {
         <path
           id="Shape_1"
           d="M18 6L6 18"
+          class="dark:active:stroke-slate-400"
           :stroke="closeColor"
           stroke-width="2"
           stroke-linecap="round"
