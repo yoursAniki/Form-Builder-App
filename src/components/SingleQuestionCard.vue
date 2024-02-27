@@ -153,18 +153,18 @@ const resizeOpt = (opt) => {
       <div
         v-on-click-outside="closeMenu"
         v-show="showMenu"
-        class="absolute sm:top-7 sm:-left-44 top-7 left-0 text-start select-none rounded bg-white py-1 transition"
+        class="absolute sm:top-7 sm:-left-44 top-7 left-0 text-start select-none rounded bg-white py-1 transition dark:bg-neutral-800"
       >
         <div class="flex flex-col">
           <button
             @click="toggleRequiredRequest"
-            class="text-left py-1 min-w-36 pl-3 text-black transition hover:bg-slate-200 cursor-pointer active:bg-slate-300"
+            class="text-left py-1 min-w-36 pl-3 text-black transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 dark:text-slate-200 dark:hover:bg-neutral-700 dark:active:bg-neutral-600"
           >
             {{ requiredText }}
           </button>
           <button
             @click="deleteCard"
-            class="text-left py-1 min-w-36 pl-3 text-red-600 transition hover:bg-slate-200 cursor-pointer active:bg-slate-300"
+            class="text-left py-1 min-w-36 pl-3 text-red-600 transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 dark:hover:bg-neutral-700 dark:active:bg-neutral-600"
           >
             Delete
           </button>
