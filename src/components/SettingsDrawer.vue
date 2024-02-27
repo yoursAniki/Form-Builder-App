@@ -33,12 +33,17 @@ const handleEscKey = (event) => {
       enter-active-class="slide-enter-active"
       leave-active-class="slide-leave-active"
     >
-      <div v-show="isDrawerOpened" class="slide bg-white fixed left-0 top-0 h-full w-96 z-20 p-6">
+      <div
+        v-show="isDrawerOpened"
+        class="slide bg-white fixed left-0 top-0 h-full w-96 z-20 p-6 dark:bg-neutral-800"
+      >
         <div class="relative">
           <SettingsButton class="absolute" @click="closeDrawer" />
-          <div class="text-center font-bold text-xl text-black pb-8">Settings</div>
+          <div class="text-center font-bold text-xl text-black pb-8 dark:text-neutral-200">
+            Settings
+          </div>
           <div class="flex justify-evenly">
-            <div class="text-black">Change color mode</div>
+            <div class="text-black dark:text-neutral-200">Change color mode</div>
             <ModeSwitcher />
           </div>
         </div>
