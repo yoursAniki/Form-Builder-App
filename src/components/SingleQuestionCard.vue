@@ -1,5 +1,5 @@
 <script setup>
-import { ref, getCurrentInstance, onMounted } from 'vue'
+import { ref, getCurrentInstance, onMounted, watch } from 'vue'
 import { vOnClickOutside } from '@vueuse/components'
 import CloseButton from './CloseButton.vue'
 import SingleQuestionIcon from './SingleQuestionIcon.vue'
@@ -16,7 +16,9 @@ const options = ref([])
 const addOption = () => {
   if (countOptions >= 12) return
 
-  options.value.push({})
+  options.value.push({
+    text: ''
+  })
   countOptions++
 }
 
@@ -97,6 +99,18 @@ const resizeOpt = (opt) => {
   opt.scrollTop = scrollTop // Восстанавливаем положение вертикального скролла
   opt.setSelectionRange(cursorPosition, cursorPosition) // Восстанавливаем положение курсора
 }
+
+const emitOptionsUpdate = (newOptions) => {
+  emit('options-update', newOptions)
+}
+
+watch(
+  options,
+  () => {
+    emitOptionsUpdate(options)
+  },
+  { deep: true }
+)
 </script>
 
 <template>
@@ -177,6 +191,7 @@ const resizeOpt = (opt) => {
           :key="option"
         >
           <textarea
+            v-model="option.text"
             wrap="on"
             @keydown.enter.prevent
             class="resize-none bg-inherit outline-none overflow-hidden text-base text-black w-full dark:text-white"

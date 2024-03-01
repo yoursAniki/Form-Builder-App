@@ -28,7 +28,8 @@ const addCard = (cardName) => {
     id: Date.now(),
     component: cardName,
     order: cards.value.length + 1,
-    isRequired: false
+    isRequired: false,
+    options: []
   })
 }
 
@@ -102,6 +103,13 @@ const router = useRouter()
 const goHomePage = () => {
   router.push('/')
   deleteAllCards()
+}
+
+//! Здесь будет функция, принимающая в виде аргументов конкретный card из component и массив options
+//* Вызывать она будет по эмиту из дочерних элементов (карточек)
+
+const addOptions = (opts, card) => {
+  card.options = opts
 }
 </script>
 
@@ -177,6 +185,7 @@ const goHomePage = () => {
             @delete-request="deleteCard(card.id)"
             @toggle-required-request="toggleRequiredRequest(card)"
             :sequenceNumber="card.order"
+            @options-update="addOptions($event._value, card)"
           />
         </div>
       </div>
