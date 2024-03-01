@@ -1,13 +1,16 @@
 <script setup>
-import { ref, getCurrentInstance, onMounted } from 'vue'
+import { ref, getCurrentInstance, onMounted, watch } from 'vue'
 import { vOnClickOutside } from '@vueuse/components'
 import CloseButton from './CloseButton.vue'
 import MultiQuestionIcon from './MultiQuestionIcon.vue'
 import GroupIcon from './GroupIcon.vue'
 import PlusIcon from './PlusIcon.vue'
 
+const { emit } = getCurrentInstance()
+
 defineProps({
-  sequenceNumber: Number
+  sequenceNumber: Number,
+  opts: Array
 })
 
 let countOptions = 0
@@ -16,16 +19,13 @@ const options = ref([])
 const addOption = () => {
   if (countOptions >= 12) return
 
-  options.value.push({})
+  emit('add-option')
   countOptions++
 }
 
 const delOption = (opt) => {
-  let ind = options.value.indexOf(opt)
-  if (ind !== -1) {
-    options.value.splice(ind, 1)
-    countOptions--
-  }
+  emit('del-option', opt)
+  countOptions--
 }
 
 const showMenu = ref(false)
@@ -33,8 +33,6 @@ const showMenu = ref(false)
 const toggleMenu = () => {
   showMenu.value = !showMenu.value
 }
-
-const { emit } = getCurrentInstance()
 
 const deleteCard = () => {
   emit('delete-request')
@@ -96,6 +94,19 @@ const resizeOpt = (opt) => {
   opt.scrollTop = scrollTop // Восстанавливаем положение вертикального скролла
   opt.setSelectionRange(cursorPosition, cursorPosition) // Восстанавливаем положение курсора
 }
+
+// Отправка измененных options в родительский компонент (Builder)
+const emitOptionsUpdate = (newOptions) => {
+  emit('options-update', newOptions)
+}
+
+watch(
+  options,
+  () => {
+    emitOptionsUpdate(options)
+  },
+  { deep: true }
+)
 </script>
 
 <template>
@@ -132,23 +143,12 @@ const resizeOpt = (opt) => {
       <MultiQuestionIcon
         class="absolute top-3 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4"
       />
-      <!-- <img
-        src="./icons/Multi.svg"
-        class="absolute top-3 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4"
-        alt="multi"
-      /> -->
       <GroupIcon
         ref="ignored"
         @click="toggleMenu"
         class="absolute top-9 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4 active:bg-slate-200 rounded"
       />
-      <!-- <img
-        ref="ignored"
-        @click="toggleMenu"
-        src="./icons/Group.svg"
-        class="absolute top-9 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4 active:bg-slate-200 rounded"
-        alt="menu"
-      /> -->
+
       <div
         v-on-click-outside="closeMenu"
         v-show="showMenu"
@@ -172,10 +172,11 @@ const resizeOpt = (opt) => {
       <div class="py-2 px-2 outline-none resize-none flex max-w-xs flex-wrap w-full" v-auto-animate>
         <div
           class="rounded pb-2 pt-2 mr-2 border-2 flex px-2 my-1"
-          v-for="option in options"
+          v-for="option in opts"
           :key="option"
         >
           <textarea
+            v-model="option.text"
             wrap="on"
             @keydown.enter.prevent
             class="resize-none bg-inherit outline-none overflow-hidden text-base text-black w-full dark:text-white"
@@ -192,7 +193,6 @@ const resizeOpt = (opt) => {
           class="text-slate-700 dark:text-neutral-300 border-2 rounded p-2 cursor-pointer select-none transition active:bg-slate-200 my-1 flex justify-center items-center"
         >
           <PlusIcon class="-ml-1 px-1 pr-2" />
-          <!-- <img class="-ml-1 px-1 pr-2" src="./icons/plus.svg" alt="plus" /> -->
           Add option
         </div>
       </div>
