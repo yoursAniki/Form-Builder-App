@@ -117,6 +117,14 @@ const addOpt = (card) => {
     text: ''
   })
 }
+
+const delOpt = (opt, card) => {
+  console.log(opt)
+  const ind = card.options.indexOf(opt)
+  if (ind !== -1) {
+    card.options.splice(ind, 1)
+  }
+}
 </script>
 
 <template>
@@ -194,6 +202,7 @@ const addOpt = (card) => {
             @options-update="renderOptions($event._value, card)"
             :opts="card.options"
             @add-option="addOpt(card)"
+            @del-option="delOpt($event, card)"
           />
         </div>
       </div>

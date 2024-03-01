@@ -20,18 +20,12 @@ const addOption = () => {
   if (countOptions >= 12) return
 
   emit('add-option')
-  // options.value.push({
-  //   text: ''
-  // })
   countOptions++
 }
 
 const delOption = (opt) => {
-  let ind = options.value.indexOf(opt)
-  if (ind !== -1) {
-    options.value.splice(ind, 1)
-    countOptions--
-  }
+  emit('del-option', opt)
+  countOptions--
 }
 
 const showMenu = ref(false)
@@ -150,23 +144,11 @@ watch(
       <SingleQuestionIcon
         class="absolute top-3 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4"
       />
-      <!-- <img
-        src="./icons/Single.svg"
-        class="absolute top-3 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4 dark:bg-white"
-        alt="single"
-      /> -->
       <GroupIcon
         ref="ignored"
         @click="toggleMenu"
         class="absolute top-9 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4 active:bg-slate-200 rounded"
       />
-      <!-- <img
-        ref="ignored"
-        @click="toggleMenu"
-        src="./icons/Group.svg"
-        class="absolute top-9 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4 active:bg-slate-200 rounded"
-        alt="menu"
-      /> -->
       <div
         v-on-click-outside="closeMenu"
         v-show="showMenu"
@@ -211,7 +193,6 @@ watch(
           class="text-slate-700 dark:text-neutral-300 border-2 rounded p-2 cursor-pointer select-none transition active:bg-slate-200 my-1 flex justify-center items-center"
         >
           <PlusIcon class="-ml-1 px-1 pr-2" />
-          <!-- <img class="-ml-1 px-1 pr-2" src="./icons/plus.svg" alt="plus" /> -->
           Add option
         </div>
       </div>
