@@ -6,8 +6,11 @@ import SingleQuestionIcon from './SingleQuestionIcon.vue'
 import GroupIcon from './GroupIcon.vue'
 import PlusIcon from './PlusIcon.vue'
 
+const { emit } = getCurrentInstance()
+
 defineProps({
-  sequenceNumber: Number
+  sequenceNumber: Number,
+  opts: Array
 })
 
 let countOptions = 0
@@ -16,9 +19,10 @@ const options = ref([])
 const addOption = () => {
   if (countOptions >= 12) return
 
-  options.value.push({
-    text: ''
-  })
+  emit('add-option')
+  // options.value.push({
+  //   text: ''
+  // })
   countOptions++
 }
 
@@ -35,8 +39,6 @@ const showMenu = ref(false)
 const toggleMenu = () => {
   showMenu.value = !showMenu.value
 }
-
-const { emit } = getCurrentInstance()
 
 const deleteCard = () => {
   emit('delete-request')
@@ -100,6 +102,7 @@ const resizeOpt = (opt) => {
   opt.setSelectionRange(cursorPosition, cursorPosition) // Восстанавливаем положение курсора
 }
 
+// Отправка измененных options в родительский компонент (Builder)
 const emitOptionsUpdate = (newOptions) => {
   emit('options-update', newOptions)
 }
@@ -187,7 +190,7 @@ watch(
       <div class="py-2 px-2 outline-none resize-none flex max-w-xs flex-wrap w-full" v-auto-animate>
         <div
           class="rounded pb-2 pt-2 mr-2 border-2 flex px-2 my-1"
-          v-for="option in options"
+          v-for="option in opts"
           :key="option"
         >
           <textarea

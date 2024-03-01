@@ -108,8 +108,14 @@ const goHomePage = () => {
 //! Здесь будет функция, принимающая в виде аргументов конкретный card из component и массив options
 //* Вызывать она будет по эмиту из дочерних элементов (карточек)
 
-const addOptions = (opts, card) => {
+const renderOptions = (opts, card) => {
   card.options = opts
+}
+
+const addOpt = (card) => {
+  card.options.push({
+    text: ''
+  })
 }
 </script>
 
@@ -185,7 +191,9 @@ const addOptions = (opts, card) => {
             @delete-request="deleteCard(card.id)"
             @toggle-required-request="toggleRequiredRequest(card)"
             :sequenceNumber="card.order"
-            @options-update="addOptions($event._value, card)"
+            @options-update="renderOptions($event._value, card)"
+            :opts="card.options"
+            @add-option="addOpt(card)"
           />
         </div>
       </div>
