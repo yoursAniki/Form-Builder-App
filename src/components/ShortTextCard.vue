@@ -1,11 +1,13 @@
 <script setup>
-import { ref, getCurrentInstance, onMounted } from 'vue'
+import { ref, getCurrentInstance, onMounted, watch } from 'vue'
 import { vOnClickOutside } from '@vueuse/components'
 import GroupIcon from './GroupIcon.vue'
 import ShortTextIcon from './ShortTextIcon.vue'
 
-defineProps({
-  sequenceNumber: Number
+const props = defineProps({
+  sequenceNumber: Number,
+  qTitle: String,
+  placeholder: String
 })
 
 const showMenu = ref(false)
@@ -58,6 +60,33 @@ onMounted(() => {
     })
   })
 })
+
+const title = ref(props.qTitle)
+const placeholder = ref(props.placeholder)
+
+const emitTitleUpdate = (newTitle) => {
+  emit('title-update', newTitle)
+}
+
+const placeholderUpdate = (newPh) => {
+  emit('placeholder-update', newPh)
+}
+
+watch(
+  title,
+  () => {
+    emitTitleUpdate(title.value)
+  },
+  { deep: true }
+)
+
+watch(
+  placeholder,
+  () => {
+    placeholderUpdate(placeholder.value)
+  },
+  { deep: true }
+)
 </script>
 <template>
   <div class="flex flex-col pt-10">
@@ -67,6 +96,7 @@ onMounted(() => {
         >{{ sequenceNumber }}</span
       >
       <textarea
+        v-model="title"
         id="text-area"
         class="overflow-hidden w-full py-2 pl-3 pr-2 bg-inherit transition focus:border-none mb-1 text-2xl font-bold min-w-64 rounded resize-none focus:outline-2 focus:outline-dashed focus:outline-slate-300 text-black dark:text-neutral-100"
         type="text"
@@ -93,23 +123,11 @@ onMounted(() => {
       <ShortTextIcon
         class="absolute -left-5 text-lg font-black cursor-pointer select-none w-4 h-4"
       />
-      <!-- <img
-        src="./icons/Short.svg"
-        class="absolute -left-5 text-lg font-black cursor-pointer select-none w-4 h-4"
-        alt="short"
-      /> -->
       <GroupIcon
         ref="ignored"
         @click="toggleMenu"
         class="absolute top-6 -left-5 text-lg font-black cursor-pointer select-none w-4 h-4 active:bg-slate-200 rounded"
       />
-      <!-- <img
-        ref="ignored"
-        @click="toggleMenu"
-        src="./icons/Group.svg"
-        class="absolute top-6 -left-5 text-lg font-black cursor-pointer select-none w-4 h-4 active:bg-slate-200 rounded"
-        alt="menu"
-      /> -->
       <div
         v-on-click-outside="closeMenu"
         v-show="showMenu"
@@ -132,6 +150,7 @@ onMounted(() => {
       </div>
       <textarea
         @keydown.enter.prevent
+        v-model="placeholder"
         id="text-area"
         class="overflow-hidden w-full py-2 px-2 bg-slate-200 placeholder:text-slate-500 outline-none rounded resize-none transition focus:text-slate-950 text-slate-400 dark:focus:text-neutral-950 dark:text-neutral-500"
         type="text"

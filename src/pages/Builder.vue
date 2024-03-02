@@ -29,7 +29,9 @@ const addCard = (cardName) => {
     component: cardName,
     order: cards.value.length + 1,
     isRequired: false,
-    options: []
+    options: [],
+    title: '',
+    placeholder: ''
   })
 }
 
@@ -125,6 +127,15 @@ const delOpt = (opt, card) => {
     card.options.splice(ind, 1)
   }
 }
+
+const renderTitle = (title, card) => {
+  card.title = title
+  console.log(title)
+}
+
+const renderPlaceholder = (placeholder, card) => {
+  card.placeholder = placeholder
+}
 </script>
 
 <template>
@@ -203,6 +214,10 @@ const delOpt = (opt, card) => {
             :opts="card.options"
             @add-option="addOpt(card)"
             @del-option="delOpt($event, card)"
+            :qTitle="card.title"
+            @title-update="renderTitle($event, card)"
+            :placeholder="card.placeholder"
+            @placeholder-update="renderPlaceholder($event, card)"
           />
         </div>
       </div>
