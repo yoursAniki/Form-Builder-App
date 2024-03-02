@@ -8,9 +8,10 @@ import PlusIcon from './PlusIcon.vue'
 
 const { emit } = getCurrentInstance()
 
-defineProps({
+const props = defineProps({
   sequenceNumber: Number,
-  opts: Array
+  opts: Array,
+  qTitle: String
 })
 
 let countOptions = 0
@@ -108,6 +109,16 @@ watch(
   },
   { deep: true }
 )
+
+const title = ref(props.qTitle)
+
+const emitTitleUpdate = (newTitle) => {
+  emit('title-update', newTitle)
+}
+
+watch(title, () => {
+  emitTitleUpdate(title.value)
+})
 </script>
 
 <template>
@@ -118,6 +129,7 @@ watch(
         >{{ sequenceNumber }}</span
       >
       <textarea
+        v-model="title"
         id="text-area"
         class="overflow-hidden w-full py-2 pl-3 pr-2 bg-inherit transition focus:border-none mb-1 text-2xl font-bold outline-none min-w-64 rounded resize-none focus:outline-2 focus:outline-dashed focus:outline-slate-300 text-black dark:text-neutral-100"
         type="text"
