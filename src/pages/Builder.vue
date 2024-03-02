@@ -130,7 +130,6 @@ const delOpt = (opt, card) => {
 
 const renderTitle = (title, card) => {
   card.title = title
-  console.log(title)
 }
 
 const renderPlaceholder = (placeholder, card) => {

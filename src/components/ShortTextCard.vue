@@ -4,6 +4,8 @@ import { vOnClickOutside } from '@vueuse/components'
 import GroupIcon from './GroupIcon.vue'
 import ShortTextIcon from './ShortTextIcon.vue'
 
+const { emit } = getCurrentInstance()
+
 const props = defineProps({
   sequenceNumber: Number,
   qTitle: String,
@@ -15,8 +17,6 @@ const showMenu = ref(false)
 const toggleMenu = () => {
   showMenu.value = !showMenu.value
 }
-
-const { emit } = getCurrentInstance()
 
 const deleteCard = () => {
   emit('delete-request')
@@ -72,21 +72,13 @@ const placeholderUpdate = (newPh) => {
   emit('placeholder-update', newPh)
 }
 
-watch(
-  title,
-  () => {
-    emitTitleUpdate(title.value)
-  },
-  { deep: true }
-)
+watch(title, () => {
+  emitTitleUpdate(title.value)
+})
 
-watch(
-  placeholder,
-  () => {
-    placeholderUpdate(placeholder.value)
-  },
-  { deep: true }
-)
+watch(placeholder, () => {
+  placeholderUpdate(placeholder.value)
+})
 </script>
 <template>
   <div class="flex flex-col pt-10">
