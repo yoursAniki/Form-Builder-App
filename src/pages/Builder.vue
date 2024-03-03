@@ -81,8 +81,8 @@ const openModal = () => {
   document.body.style.overflow = 'hidden'
 }
 
-const toggleRequiredRequest = (card) => {
-  card.isRequired = !card.isRequired
+const toggleRequiredRequest = (isReq, card) => {
+  card.isRequired = isReq
 }
 
 const isFormEmpty = () => {
@@ -106,9 +106,6 @@ const goHomePage = () => {
   router.push('/')
   deleteAllCards()
 }
-
-//! Здесь будет функция, принимающая в виде аргументов конкретный card из component и массив options
-//* Вызывать она будет по эмиту из дочерних элементов (карточек)
 
 const renderOptions = (opts, card) => {
   card.options = opts
@@ -207,7 +204,7 @@ const renderPlaceholder = (placeholder, card) => {
             :data="card"
             v-bind="card.props"
             @delete-request="deleteCard(card.id)"
-            @toggle-required-request="toggleRequiredRequest(card)"
+            @toggle-required-request="toggleRequiredRequest($event, card)"
             :sequenceNumber="card.order"
             @options-update="renderOptions($event._value, card)"
             :opts="card.options"
@@ -217,6 +214,7 @@ const renderPlaceholder = (placeholder, card) => {
             @title-update="renderTitle($event, card)"
             :placeholder="card.placeholder"
             @placeholder-update="renderPlaceholder($event, card)"
+            :required="card.isRequired"
           />
         </div>
       </div>

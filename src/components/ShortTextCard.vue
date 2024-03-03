@@ -9,7 +9,8 @@ const { emit } = getCurrentInstance()
 const props = defineProps({
   sequenceNumber: Number,
   qTitle: String,
-  placeholder: String
+  placeholder: String,
+  required: Boolean
 })
 
 const showMenu = ref(false)
@@ -43,7 +44,7 @@ const toggleRequiredRequest = () => {
   } else {
     requiredText.value = 'Enforce answer'
   }
-  emit('toggle-required-request')
+  emit('toggle-required-request', isRequired.value)
 }
 
 const showRequiredText = ref(false)
@@ -97,7 +98,7 @@ watch(placeholder, () => {
         @keydown.enter.prevent
       ></textarea>
       <img
-        v-show="isRequired"
+        v-show="required"
         @mouseover="showRequiredText = true"
         @mouseleave="showRequiredText = false"
         class="absolute right-0 top-0 select-none"
