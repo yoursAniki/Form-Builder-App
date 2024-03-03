@@ -41,8 +41,6 @@ const goHomePage = () => {
   router.push('/')
   deleteAllCards()
 }
-
-const selected = ref(null)
 </script>
 <template>
   <Header>
@@ -83,9 +81,9 @@ const selected = ref(null)
   />
 
   <div class="bg-slate-100 min-h-screen flex-grow dark:bg-neutral-900">
-    <div class="flex justify-center text-center flex-col m-auto items-center pt-12 px-8">
+    <div class="flex justify-center text-center flex-col m-auto items-center pt-12 px-8 gap-7">
       <div v-for="card in cards" :key="card.id" class="flex flex-col">
-        <div v-if="card.component === 'ShortTextCard'" class="flex flex-col">
+        <div v-if="card.component === 'ShortTextCard'" class="flex flex-col relative">
           <textarea
             v-model="card.title"
             disabled
@@ -95,6 +93,12 @@ const selected = ref(null)
             maxlength="60"
             @keydown.enter.prevent
           ></textarea>
+          <img
+            v-show="card.isRequired"
+            class="absolute right-0 top-0 select-none"
+            src="/src/components/icons/Enforced.svg"
+            alt="is required"
+          />
           <textarea
             @keydown.enter.prevent
             :placeholder="card.placeholder"
@@ -104,7 +108,7 @@ const selected = ref(null)
             maxlength="50"
           ></textarea>
         </div>
-        <div v-if="card.component === 'LongTextCard'" class="flex flex-col">
+        <div v-if="card.component === 'LongTextCard'" class="flex flex-col relative">
           <textarea
             v-model="card.title"
             disabled
@@ -114,6 +118,12 @@ const selected = ref(null)
             maxlength="60"
             @keydown.enter.prevent
           ></textarea>
+          <img
+            v-show="card.isRequired"
+            class="absolute right-0 top-0 select-none"
+            src="/src/components/icons/Enforced.svg"
+            alt="is required"
+          />
           <textarea
             :placeholder="card.placeholder"
             @keydown.enter.prevent
@@ -122,7 +132,7 @@ const selected = ref(null)
             maxlength="100"
           ></textarea>
         </div>
-        <div v-if="card.component === 'SingleQuestionCard'" class="flex flex-col">
+        <div v-if="card.component === 'SingleQuestionCard'" class="flex flex-col relative">
           <textarea
             v-model="card.title"
             disabled
@@ -132,6 +142,12 @@ const selected = ref(null)
             maxlength="60"
             @keydown.enter.prevent
           ></textarea>
+          <img
+            v-show="card.isRequired"
+            class="absolute right-0 top-0 select-none"
+            src="/src/components/icons/Enforced.svg"
+            alt="is required"
+          />
 
           <div
             class="rounded pb-2 pt-2 mr-2 border-2 flex px-2 my-1"
@@ -152,7 +168,7 @@ const selected = ref(null)
             </form>
           </div>
         </div>
-        <div v-if="card.component === 'MultiQuestionCard'" class="flex flex-col">
+        <div v-if="card.component === 'MultiQuestionCard'" class="flex flex-col relative">
           <textarea
             v-model="card.title"
             disabled
@@ -162,6 +178,12 @@ const selected = ref(null)
             maxlength="60"
             @keydown.enter.prevent
           ></textarea>
+          <img
+            v-show="card.isRequired"
+            class="absolute right-0 top-0 select-none"
+            src="/src/components/icons/Enforced.svg"
+            alt="is required"
+          />
 
           <div
             class="rounded pb-2 pt-2 mr-2 border-2 flex px-2 my-1"
