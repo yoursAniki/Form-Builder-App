@@ -9,7 +9,8 @@ const { emit } = getCurrentInstance()
 const props = defineProps({
   sequenceNumber: Number,
   qTitle: String,
-  placeholder: String
+  placeholder: String,
+  required: Boolean
 })
 
 const showMenu = ref(false)
@@ -33,17 +34,16 @@ const closeMenu = [
 
 const isRequired = ref(false)
 
-const requiredText = ref('Enforce answer')
-
-const toggleRequiredRequest = () => {
+const openRequiredRequest = () => {
   toggleMenu()
-  isRequired.value = !isRequired.value
-  if (isRequired.value === true) {
-    requiredText.value = 'Neglect answer'
-  } else {
-    requiredText.value = 'Enforce answer'
-  }
-  emit('toggle-required-request')
+  isRequired.value = true
+  emit('toggle-required-request', isRequired.value)
+}
+
+const closeRequiredRequest = () => {
+  toggleMenu()
+  isRequired.value = false
+  emit('toggle-required-request', isRequired.value)
 }
 
 const showRequiredText = ref(false)
@@ -97,7 +97,7 @@ watch(placeholder, () => {
         @keydown.enter.prevent
       ></textarea>
       <img
-        v-show="isRequired"
+        v-show="required"
         @mouseover="showRequiredText = true"
         @mouseleave="showRequiredText = false"
         class="absolute right-0 top-0 select-none"
@@ -127,10 +127,18 @@ watch(placeholder, () => {
       >
         <div class="flex flex-col">
           <button
-            @click="toggleRequiredRequest"
+            v-if="required === false"
+            @click="openRequiredRequest"
             class="text-left py-1 min-w-36 pl-3 text-black transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 dark:text-slate-200 dark:hover:bg-neutral-700 dark:active:bg-neutral-600"
           >
-            {{ requiredText }}
+            Enforce answer
+          </button>
+          <button
+            v-else
+            @click="closeRequiredRequest"
+            class="text-left py-1 min-w-36 pl-3 text-black transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 dark:text-slate-200 dark:hover:bg-neutral-700 dark:active:bg-neutral-600"
+          >
+            Neglect answer
           </button>
           <button
             @click="deleteCard"
