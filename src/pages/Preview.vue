@@ -81,7 +81,9 @@ const goHomePage = () => {
   />
 
   <div class="bg-slate-100 min-h-screen flex-grow dark:bg-neutral-900">
-    <div class="flex justify-center text-center flex-col m-auto items-center pt-12 px-8 gap-7">
+    <div
+      class="flex justify-center text-center flex-col m-auto items-center pt-12 px-8 gap-7 pb-14"
+    >
       <div v-for="card in cards" :key="card.id" class="flex flex-col">
         <div v-if="card.component === 'ShortTextCard'" class="flex flex-col relative">
           <textarea

@@ -151,13 +151,23 @@ const renderPlaceholder = (placeholder, card) => {
     </template>
 
     <template v-slot:button>
-      <router-link to="/preview">
+      <div v-if="cards.length > 0">
+        <router-link to="/preview">
+          <button
+            class="text-slate-500 text-xs w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10 dark:hover:bg-neutral-700 dark:active:bg-neutral-600 dark:text-neutral-200"
+          >
+            View Preview
+          </button>
+        </router-link>
+      </div>
+      <div v-else>
         <button
-          class="text-slate-500 text-xs w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10 dark:hover:bg-neutral-700 dark:active:bg-neutral-600 dark:text-neutral-200"
+          disabled
+          class="text-slate-500 text-xs w-16 h-10 border-2 md:rounded-md rounded transition bg-slate-100 cursor-pointer select-none shadow md:text-lg md:w-36 md:h-10 dark:bg-neutral-600 dark:text-neutral-200 dark:border-zinc-600"
         >
           View Preview
         </button>
-      </router-link>
+      </div>
       <button
         class="bg-slate-950 text-xs w-14 h-10 md:rounded-md rounded transition hover:bg-slate-800 cursor-pointer active:bg-slate-700 select-none shadow md:text-lg md:w-28 md:h-10 text-white dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:active:bg-neutral-500"
       >
