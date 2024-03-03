@@ -136,14 +136,16 @@ watch(title, () => {
         maxlength="60"
         @keydown.enter.prevent
       ></textarea>
-      <img
-        v-show="required"
-        @mouseover="showRequiredText = true"
-        @mouseleave="showRequiredText = false"
-        class="absolute right-0 top-0 select-none"
-        src="./icons/Enforced.svg"
-        alt="is required"
-      />
+      <transition name="fade">
+        <img
+          v-show="required"
+          @mouseover="showRequiredText = true"
+          @mouseleave="showRequiredText = false"
+          class="absolute right-0 top-0 select-none"
+          src="./icons/Enforced.svg"
+          alt="is required"
+        />
+      </transition>
       <div
         v-show="showRequiredText"
         class="text-sm text-slate-400 absolute -top-4 right-6 text-nowrap"
@@ -160,35 +162,36 @@ watch(title, () => {
         @click="toggleMenu"
         class="absolute top-9 -left-4 text-lg font-black cursor-pointer select-none w-4 h-4 active:bg-slate-200 rounded"
       />
-
-      <div
-        v-on-click-outside="closeMenu"
-        v-show="showMenu"
-        class="absolute sm:top-7 sm:-left-44 top-7 left-0 text-start select-none rounded bg-white py-1 transition dark:bg-neutral-800"
-      >
-        <div class="flex flex-col">
-          <button
-            v-if="required === false"
-            @click="openRequiredRequest"
-            class="text-left py-1 min-w-36 pl-3 text-black transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 dark:text-slate-200 dark:hover:bg-neutral-700 dark:active:bg-neutral-600"
-          >
-            Enforce answer
-          </button>
-          <button
-            v-else
-            @click="closeRequiredRequest"
-            class="text-left py-1 min-w-36 pl-3 text-black transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 dark:text-slate-200 dark:hover:bg-neutral-700 dark:active:bg-neutral-600"
-          >
-            Neglect answer
-          </button>
-          <button
-            @click="deleteCard"
-            class="text-left py-1 min-w-36 pl-3 text-red-600 transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 dark:hover:bg-neutral-700 dark:active:bg-neutral-600"
-          >
-            Delete
-          </button>
+      <transition name="slide-fade">
+        <div
+          v-on-click-outside="closeMenu"
+          v-show="showMenu"
+          class="absolute sm:top-7 sm:-left-44 top-7 left-0 text-start select-none rounded bg-white py-1 transition dark:bg-neutral-800"
+        >
+          <div class="flex flex-col">
+            <button
+              v-if="required === false"
+              @click="openRequiredRequest"
+              class="text-left py-1 min-w-36 pl-3 text-black transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 dark:text-slate-200 dark:hover:bg-neutral-700 dark:active:bg-neutral-600"
+            >
+              Enforce answer
+            </button>
+            <button
+              v-else
+              @click="closeRequiredRequest"
+              class="text-left py-1 min-w-36 pl-3 text-black transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 dark:text-slate-200 dark:hover:bg-neutral-700 dark:active:bg-neutral-600"
+            >
+              Neglect answer
+            </button>
+            <button
+              @click="deleteCard"
+              class="text-left py-1 min-w-36 pl-3 text-red-600 transition hover:bg-slate-200 cursor-pointer active:bg-slate-300 dark:hover:bg-neutral-700 dark:active:bg-neutral-600"
+            >
+              Delete
+            </button>
+          </div>
         </div>
-      </div>
+      </transition>
       <div class="py-2 px-2 outline-none resize-none flex max-w-xs flex-wrap w-full" v-auto-animate>
         <div
           class="rounded pb-2 pt-2 mr-2 border-2 flex px-2 my-1"
@@ -219,3 +222,34 @@ watch(title, () => {
     </div>
   </div>
 </template>
+
+<style scoped>
+/* animation for enforcing/neglecting question */
+.fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.fade-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* animation for menu */
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(15px);
+  opacity: 0;
+}
+</style>
