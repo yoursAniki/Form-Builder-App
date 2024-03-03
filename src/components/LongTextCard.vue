@@ -176,7 +176,6 @@ watch(placeholder, () => {
 
 .fade-enter-from,
 .fade-leave-to {
-  /* transform: translateX(20px); */
   opacity: 0;
 }
 
