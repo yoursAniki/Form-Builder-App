@@ -86,6 +86,11 @@ const goHomePage = () => {
     >
       <div v-for="card in cards" :key="card.id" class="flex flex-col">
         <div v-if="card.component === 'ShortTextCard'" class="flex flex-col relative">
+          <div
+            class="absolute top-3 -left-4 text-lg text-slate-400 select-none dark:text-neutral-50"
+          >
+            {{ card.order }}
+          </div>
           <textarea
             v-model="card.title"
             disabled
@@ -111,6 +116,11 @@ const goHomePage = () => {
           ></textarea>
         </div>
         <div v-if="card.component === 'LongTextCard'" class="flex flex-col relative">
+          <div
+            class="absolute top-3 -left-4 text-lg text-slate-400 select-none dark:text-neutral-50"
+          >
+            {{ card.order }}
+          </div>
           <textarea
             v-model="card.title"
             disabled
@@ -135,6 +145,11 @@ const goHomePage = () => {
           ></textarea>
         </div>
         <div v-if="card.component === 'SingleQuestionCard'" class="flex flex-col relative">
+          <div
+            class="absolute top-3 -left-4 text-lg text-slate-400 select-none dark:text-neutral-50"
+          >
+            {{ card.order }}
+          </div>
           <textarea
             v-model="card.title"
             disabled
@@ -173,6 +188,11 @@ const goHomePage = () => {
           </div>
         </div>
         <div v-if="card.component === 'MultiQuestionCard'" class="flex flex-col relative">
+          <div
+            class="absolute top-3 -left-4 text-lg text-slate-400 select-none dark:text-neutral-50"
+          >
+            {{ card.order }}
+          </div>
           <textarea
             v-model="card.title"
             disabled
