@@ -119,7 +119,6 @@ const addOpt = (card) => {
 }
 
 const delOpt = (opt, card) => {
-  console.log(opt)
   const ind = card.options.indexOf(opt)
   if (ind !== -1) {
     card.options.splice(ind, 1)
@@ -132,6 +131,25 @@ const renderTitle = (title, card) => {
 
 const renderPlaceholder = (placeholder, card) => {
   card.placeholder = placeholder
+}
+
+const isAllTitlesValid = () => {
+  if (cards.value.length === 0) {
+    return
+  }
+  const isValid = ref(false)
+
+  cards.value.forEach((card) => {
+    if (card.title.length < 5) {
+      isValid.value = false
+      return
+    }
+
+    isValid.value = true
+    return
+  })
+
+  return isValid.value
 }
 </script>
 
@@ -151,7 +169,7 @@ const renderPlaceholder = (placeholder, card) => {
     </template>
 
     <template v-slot:button>
-      <div v-if="cards.length > 0">
+      <div v-if="cards.length > 0 && isAllTitlesValid()">
         <router-link to="/preview">
           <button
             class="text-slate-500 text-xs w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10 dark:hover:bg-neutral-700 dark:active:bg-neutral-600 dark:text-neutral-200"
