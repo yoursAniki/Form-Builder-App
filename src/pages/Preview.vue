@@ -160,13 +160,15 @@ const goHomePage = () => {
               <input
                 tabindex="-1"
                 type="radio"
-                class="cursor-pointer resize-none bg-inherit outline-none overflow-hidden text-base text-black w-full dark:text-white"
+                class="cursor-pointer resize-none bg-inherit outline-none overflow-hidden text-base text-black dark:text-white"
                 :name="'options_' + option.id"
                 :value="option.text"
                 :id="'option_' + option.id"
                 v-model="card.selectedOption"
               />
-              <label class="text-black pl-2" :for="'option_' + option.id">{{ option.text }}</label>
+              <label class="text-black pl-2 dark:text-white" :for="'option_' + option.id">{{
+                option.text
+              }}</label>
             </form>
           </div>
         </div>
