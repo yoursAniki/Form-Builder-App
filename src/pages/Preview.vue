@@ -197,12 +197,14 @@ const goHomePage = () => {
             <form class="flex">
               <input
                 type="checkbox"
-                class="cursor-pointer resize-none bg-inherit outline-none overflow-hidden text-base text-black w-full dark:text-white"
+                class="cursor-pointer resize-none bg-inherit outline-none overflow-hidden text-base text-black dark:text-white"
                 :name="'options_' + option.id"
                 :value="option.text"
                 :id="'option_' + option.id"
               />
-              <label class="text-black pl-2" :for="'option_' + option.id">{{ option.text }}</label>
+              <label class="text-black pl-2 dark:text-white" :for="'option_' + option.id">{{
+                option.text
+              }}</label>
             </form>
           </div>
         </div>
