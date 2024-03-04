@@ -129,9 +129,11 @@ watch(title, () => {
         >{{ sequenceNumber }}</span
       >
       <textarea
+        required
+        minlength="5"
         v-model="title"
         id="text-area"
-        class="overflow-hidden w-full py-2 pl-3 pr-2 bg-inherit transition focus:border-none mb-1 text-2xl font-bold outline-none min-w-64 rounded resize-none focus:outline-2 focus:outline-dashed focus:outline-slate-300 text-black dark:text-neutral-100"
+        class="overflow-hidden w-full py-2 pl-3 pr-2 bg-inherit transition focus:border-none mb-1 text-2xl font-bold outline-none min-w-64 rounded resize-none focus:outline-2 focus:outline-dashed focus:outline-slate-300 text-black dark:text-neutral-100 invalid:border-red-500 invalid:border-2 invalid:focus:outline-red-500"
         type="text"
         placeholder="Click to edit prompt"
         maxlength="60"
