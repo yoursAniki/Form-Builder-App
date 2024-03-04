@@ -129,7 +129,7 @@ const goHomePage = () => {
           <textarea
             :placeholder="card.placeholder"
             @keydown.enter.prevent
-            class="h-28 overflow-hidden w-full py-2 px-2 bg-slate-200 placeholder:text-slate-500 outline-none rounded resize-none transition focus:text-slate-950 text-slate-400 dark:focus:text-neutral-950 dark:text-neutral-500"
+            class="h-28 overflow-hidden w-full py-2 px-2 bg-slate-200 placeholder:text-slate-500 outline-none rounded resize-none transition text-slate-950 dark:text-neutral-950"
             type="text"
             maxlength="100"
           ></textarea>
