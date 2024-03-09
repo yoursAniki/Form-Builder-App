@@ -137,19 +137,35 @@ const isAllTitlesValid = () => {
   if (cards.value.length === 0) {
     return
   }
-  const isValid = ref(false)
+  let isValid = false
 
   cards.value.forEach((card) => {
     if (card.title.length < 5) {
-      isValid.value = false
+      isValid = false
       return
     }
-
-    isValid.value = true
+    isValid = true
     return
   })
 
-  return isValid.value
+  return isValid
+}
+
+const isAllOptionsValid = () => {
+  let isValid = true
+  cards.value.forEach((card) => {
+    if (card.options.length < 2) {
+      isValid = false
+      return
+    }
+    card.options.forEach((opt) => {
+      if (opt.text === '') {
+        isValid = false
+        return
+      }
+    })
+  })
+  return isValid
 }
 </script>
 
@@ -169,7 +185,7 @@ const isAllTitlesValid = () => {
     </template>
 
     <template v-slot:button>
-      <div v-if="cards.length > 0 && isAllTitlesValid()">
+      <div v-if="cards.length > 0 && isAllTitlesValid() && isAllOptionsValid()">
         <router-link to="/preview">
           <button
             class="text-slate-500 text-xs w-16 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-100 cursor-pointer active:bg-slate-200 select-none shadow md:text-lg md:w-36 md:h-10 dark:hover:bg-neutral-700 dark:active:bg-neutral-600 dark:text-neutral-200"

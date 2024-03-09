@@ -83,8 +83,9 @@ const resizeOpt = (opt) => {
   const scrollTop = opt.scrollTop // Сохраняем текущее положение вертикального скролла
   const cursorPosition = opt.selectionStart // Сохраняем текущее положение курсора
 
-  opt.value = opt.value.trim()
-  opt.value += ' '
+  // ! Вроде как можно обойтись без этого (+ валидация будет работать корректно)
+  // opt.value = opt.value.trim()
+  // opt.value += ' '
 
   opt.style.height = 'auto'
   let newHeight = opt.scrollHeight + 'px'
@@ -202,14 +203,17 @@ watch(title, () => {
           :key="option"
         >
           <textarea
+            required
+            minlength="1"
             v-model="option.text"
             wrap="on"
             @keydown.enter.prevent
-            class="resize-none bg-inherit outline-none overflow-hidden text-base text-black w-full dark:text-white"
+            class="resize-none bg-inherit outline-none overflow-hidden text-base text-black w-full dark:text-white invalid:bg-red-500 invalid:bg-opacity-30"
             name="option"
             maxlength="50"
             rows="1"
             @input="resizeOpt($event.target)"
+            @keydown.enter="addOption()"
           >
           </textarea>
           <CloseButton @click="delOption(option)" class="pl-1" />
