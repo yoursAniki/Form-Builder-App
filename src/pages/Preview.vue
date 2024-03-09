@@ -175,7 +175,7 @@ const goHomePage = () => {
               <input
                 tabindex="-1"
                 type="radio"
-                class="cursor-pointer resize-none bg-inherit outline-none overflow-hidden text-base text-black dark:text-white"
+                class="cursor-pointer resize-none bg-inherit outline-none overflow-hidden text-base text-black dark:text-white accent-white"
                 :name="'options_' + option.id"
                 :value="option.text"
                 :id="'option_' + option.id"
@@ -217,7 +217,7 @@ const goHomePage = () => {
             <form class="flex">
               <input
                 type="checkbox"
-                class="cursor-pointer resize-none bg-inherit outline-none overflow-hidden text-base text-black dark:text-white"
+                class="cursor-pointer resize-none bg-inherit outline-none overflow-hidden text-base text-black dark:text-white accent-white"
                 :name="'options_' + option.id"
                 :value="option.text"
                 :id="'option_' + option.id"
