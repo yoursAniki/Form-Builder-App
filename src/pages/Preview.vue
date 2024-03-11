@@ -166,12 +166,8 @@ const goHomePage = () => {
             alt="is required"
           />
 
-          <div
-            class="rounded pb-2 pt-2 mr-2 border-2 flex px-2 my-1"
-            v-for="option in card.options"
-            :key="option"
-          >
-            <form class="flex">
+          <div class="rounded border-2 flex my-1" v-for="option in card.options" :key="option">
+            <label class="flex flex-auto pb-2 pt-2 px-2 cursor-pointer">
               <input
                 tabindex="-1"
                 type="radio"
@@ -181,10 +177,10 @@ const goHomePage = () => {
                 :id="'option_' + option.id"
                 v-model="card.selectedOption"
               />
-              <label class="text-black pl-2 dark:text-white" :for="'option_' + option.id">{{
-                option.text
-              }}</label>
-            </form>
+              <div class="text-black pl-2 dark:text-white grow text-left select-none">
+                {{ option.text }}
+              </div>
+            </label>
           </div>
         </div>
         <div v-if="card.component === 'MultiQuestionCard'" class="flex flex-col relative">
@@ -209,12 +205,8 @@ const goHomePage = () => {
             alt="is required"
           />
 
-          <div
-            class="rounded pb-2 pt-2 mr-2 border-2 flex px-2 my-1"
-            v-for="option in card.options"
-            :key="option"
-          >
-            <form class="flex">
+          <div class="rounded border-2 flex my-1" v-for="option in card.options" :key="option">
+            <label class="flex flex-auto pb-2 pt-2 px-2 cursor-pointer">
               <input
                 type="checkbox"
                 class="cursor-pointer resize-none bg-inherit outline-none overflow-hidden text-base text-black dark:text-white accent-white"
@@ -222,10 +214,10 @@ const goHomePage = () => {
                 :value="option.text"
                 :id="'option_' + option.id"
               />
-              <label class="text-black pl-2 dark:text-white" :for="'option_' + option.id">{{
-                option.text
-              }}</label>
-            </form>
+              <div class="text-black pl-2 dark:text-white grow text-left select-none">
+                {{ option.text }}
+              </div>
+            </label>
           </div>
         </div>
       </div>
