@@ -152,6 +152,15 @@ const isAllTitlesValid = () => {
 }
 
 const isAllOptionsValid = () => {
+  let questionCards = 0
+
+  cards.value.forEach((el) => {
+    if (el.component === 'SingleQuestionCard' || el.component === 'MultiQuestionCard') {
+      questionCards++
+    }
+  })
+  if (!questionCards) return true
+
   let isValid = true
   cards.value.forEach((card) => {
     if (card.options.length < 2) {
@@ -197,7 +206,7 @@ const isAllOptionsValid = () => {
       <div v-else>
         <button
           disabled
-          class="text-slate-500 text-xs w-16 h-10 border-2 md:rounded-md rounded transition bg-slate-100 cursor-pointer select-none shadow md:text-lg md:w-36 md:h-10 dark:bg-neutral-600 dark:text-neutral-200 dark:border-zinc-600"
+          class="text-slate-500 text-xs w-16 h-10 border-2 md:rounded-md rounded transition bg-slate-100 select-none shadow md:text-lg md:w-36 md:h-10 dark:bg-neutral-600 dark:text-neutral-200 dark:border-zinc-600"
         >
           View Preview
         </button>
