@@ -152,28 +152,35 @@ const isAllTitlesValid = () => {
 }
 
 const isAllOptionsValid = () => {
-  let questionCards = 0
+  // let questionCards = 0
 
-  cards.value.forEach((el) => {
-    if (el.component === 'SingleQuestionCard' || el.component === 'MultiQuestionCard') {
-      questionCards++
-    }
-  })
-  if (!questionCards) return true
+  // cards.value.forEach((el) => {
+  //   if (el.component === 'SingleQuestionCard' || el.component === 'MultiQuestionCard') {
+  //     questionCards++
+  //   }
+  // })
+  // if (!questionCards) return true
 
   let isValid = true
   cards.value.forEach((card) => {
-    if (card.options.length < 2) {
+    if (
+      card.options.length < 2 &&
+      (card.component == 'SingleQuestionCard' || card.component == 'MultiQuestionCard')
+    ) {
       isValid = false
       return
     }
     card.options.forEach((opt) => {
-      if (opt.text === '') {
+      if (
+        opt.text === '' &&
+        (card.component == 'SingleQuestionCard' || card.component == 'MultiQuestionCard')
+      ) {
         isValid = false
         return
       }
     })
   })
+
   return isValid
 }
 </script>
