@@ -10,7 +10,7 @@ const drawer = ref(null)
 
 onMounted(() => {
   drawer.value.focus()
-  console.log(drawer.value)
+  // console.log(drawer.value)
   window.addEventListener('keydown', handleEscKey)
 })
 //* Без этого не работает анимация отрытия/закрытия

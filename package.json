@@ -15,6 +15,8 @@
   "dependencies": {
     "@formkit/auto-animate": "^0.8.1",
     "@vueuse/components": "^10.7.2",
+    "firebase": "^10.11.0",
+    "pinia": "^2.1.7",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5",
     "vuex": "^4.0.2"
