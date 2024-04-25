@@ -56,6 +56,13 @@ provide('drawerActions', {
       >
         Remove All
       </button>
+      <router-link to="/signup">
+        <button
+          class="text-sm text-white bg-black w-20 h-10 border-2 md:rounded-md rounded transition hover:bg-slate-800 cursor-pointer active:bg-slate-700 select-none shadow md:text-lg md:w-36 md:h-10 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:active:bg-neutral-600 dark:text-red-400"
+        >
+          Sign Up
+        </button>
+      </router-link>
     </template>
   </Header>
 

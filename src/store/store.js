@@ -1,5 +1,4 @@
 import { createStore } from 'vuex'
-import { defineStore } from 'pinia'
 
 export const store = createStore({
   state: () => ({
@@ -13,8 +12,4 @@ export const store = createStore({
       state.isLightMode = newValue
     }
   }
-})
-
-export const useAuthStore = defineStore('auth', () => {
-  
 })
