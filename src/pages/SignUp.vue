@@ -15,7 +15,41 @@ const startSignUp = async () => {
 }
 </script>
 <template>
-  <div class="h-screen bg-wrapper wrapper flex flex-col bg-slate-200">
+  <div class="h-screen bg-wrapper wrapper flex flex-col bg-slate-200 relative">
+    <!-- ! Возможно аутентификация будет обязательной -->
+    <!-- <router-link to="/">
+      <div
+        class="absolute select-none top-3 left-5 text-black text-xl font-medium uppercase flex gap-2 items-center"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="feather-icon / arrow-left">
+            <path
+              id="Shape"
+              d="M20 12H4"
+              stroke="#111111"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              id="Shape_2"
+              d="M10 18L4 12L10 6"
+              stroke="#111111"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </g>
+        </svg>
+        <div>go back</div>
+      </div>
+    </router-link> -->
     <div class="flex items-center flex-col flex-auto justify-center">
       <!-- Карточка с логином -->
       <div
@@ -24,7 +58,7 @@ const startSignUp = async () => {
         <p class="text-2xl font-semibold">Sign Up</p>
         <div class="flex flex-col gap-1 sm:w-auto w-full">
           <div class="flex flex-col gap-1">
-            <p class="lessons-text text-lg font-bold">Nickname or email</p>
+            <p class="lessons-text text-lg font-bold">Email</p>
             <input
               class="mb-4 bg-slate-200 py-3 px-3 sm:w-80 rounded-xl focus:outline-none text-black"
               type="email"
