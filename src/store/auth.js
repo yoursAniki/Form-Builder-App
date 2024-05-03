@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import axios from 'axios'
 
-const API_KEY = 'AIzaSyDI3hwsb45M1uQvIr6LarTM71hAuRTjb4c'
+const API_KEY = import.meta.env.VITE_API_KEY_FIREBASE
 
 // `https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=${API_KEY}`
 
@@ -18,12 +18,14 @@ export const useAuthStore = defineStore('auth', () => {
   const error = ref('')
   const loading = ref(false)
 
-  const signUp = async (payload) => {
+  const auth = async (payload, type) => {
+    const url = type === 'signup' ? 'signUp' : 'signInWithPassword'
+
     loading.value = true
     error.value = ''
     try {
       let response = await axios.post(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`,
+        `https://identitytoolkit.googleapis.com/v1/accounts:${url}?key=${API_KEY}`,
         {
           ...payload,
           returnSecureToken: true
@@ -38,6 +40,7 @@ export const useAuthStore = defineStore('auth', () => {
       }
       console.log(response.data)
     } catch (err) {
+      console.log(err.response)
       switch (err.response.data.error.message) {
         case 'EMAIL_EXISTS':
           error.value = 'This email is already exists'
@@ -45,14 +48,26 @@ export const useAuthStore = defineStore('auth', () => {
         case 'OPERATION_NOT_ALLOWED':
           error.value = 'Operation not allowed'
           break
+        case 'Too_MANY_ATTEMPTS_TRY_LATER':
+          error.value = 'Too many attempts, try later'
+          break
+        case 'EMAIL_NOT_FOUND':
+          error.value = 'This email is not found'
+          break
+        case 'INVALID_PASSWORD':
+          error.value = 'Invalid password'
+          break
+        case 'USER_DISABLED':
+          error.value = 'This user was disabled by admin'
+          break
         default:
           error.value = 'Error'
           break
       }
-      console.log(err.response)
+      throw error.value
     } finally {
       loading.value = false
     }
   }
-  return { signUp, userInfo, error, loading }
+  return { auth, userInfo, error, loading }
 })

@@ -12,6 +12,7 @@ import Home from './pages/Home.vue'
 import Builder from './pages/Builder.vue'
 import Preview from './pages/Preview.vue'
 import SignUp from './pages/SignUp.vue'
+import SignIn from './pages/SignIn.vue'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDI3hwsb45M1uQvIr6LarTM71hAuRTjb4c',
@@ -30,7 +31,8 @@ const routes = [
   { path: '/', name: 'Home', component: Home },
   { path: '/builder', name: 'Builder', component: Builder },
   { path: '/preview', name: 'Preview', component: Preview },
-  { path: '/signup', name: 'SignUp', component: SignUp }
+  { path: '/signup', name: 'SignUp', component: SignUp },
+  { path: '/signin', name: 'SignIn', component: SignIn }
 ]
 
 const router = createRouter({

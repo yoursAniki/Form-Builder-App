@@ -1,20 +1,21 @@
 <script setup>
 import { ref } from 'vue'
 import { useAuthStore } from '@/store/auth'
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
 
 const authStore = useAuthStore()
 
 const email = ref()
 const password = ref()
 
-const startSignUp = async () => {
-  await authStore.auth(
-    {
-      email: email.value,
-      password: password.value
-    },
-    'signup'
-  )
+const startSignIn = async () => {
+  await authStore.auth({
+    email: email.value,
+    password: password.value
+  }, 'signin')
+  router.push('/')
 }
 </script>
 <template>
@@ -58,7 +59,7 @@ const startSignUp = async () => {
       <div
         class="bg-slate-800 bg-opacity-30 px-5 py-7 flex flex-col gap-8 rounded-3xl items-center sm:w-auto w-11/12 text-black shadow-md"
       >
-        <p class="text-2xl font-semibold">Sign Up</p>
+        <p class="text-2xl font-semibold">Sign In</p>
         <div class="flex flex-col gap-1 sm:w-auto w-full">
           <div class="flex flex-col gap-1">
             <p class="lessons-text text-lg font-bold">Email</p>
@@ -86,17 +87,17 @@ const startSignUp = async () => {
 
           <button
             v-else
-            @click="startSignUp"
+            @click="startSignIn"
             class="select-button rounded-xl border-2 bg-slate-200 py-3 text-black text-xl font-semibold mt-3 select-none hover:bg-slate-300 active:bg-slate-400"
           >
-            Sign Up
+            Sign In
           </button>
         </div>
       </div>
       <div class="text-black text-lg text-center mt-6">
-        Are you already registered?
-        <router-link to="/signin">
-          <div class="primary-color font-bold inline select-none">Sign in</div>
+        Go back to
+        <router-link to="/signup">
+          <div class="primary-color font-bold inline select-none">Sign up</div>
         </router-link>
       </div>
     </div>
